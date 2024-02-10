@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://d3i80ym3tqa2e"]
+
+[ext_resource type="Script" path="res://scenes/screen.gd" id="1_dsoru"]
+[ext_resource type="Texture2D" uid="uid://blhr5qcj8mc1a" path="res://assets/fondo.png" id="1_jtktg"]
+[ext_resource type="Texture2D" uid="uid://bq3r5xdeeakn6" path="res://assets/stop.png" id="3_fc2or"]
+[ext_resource type="Texture2D" uid="uid://dfr0gwenfw7w0" path="res://assets/more.png" id="3_hsih5"]
+[ext_resource type="Script" path="res://scenes/movecam.gd" id="4_4mu83"]
+[ext_resource type="Texture2D" uid="uid://c7agfl815n7ih" path="res://assets/less.png" id="4_gywgv"]
+[ext_resource type="Script" path="res://scripts/stage.gd" id="4_jfgr6"]
+[ext_resource type="Texture2D" uid="uid://4famnhsrskd4" path="res://assets/electron.png" id="6_gfdjo"]
+
+[sub_resource type="FontFile" id="FontFile_w71co"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_dsoru")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -38.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="start_stop" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.309804)
+position = Vector2(-254, -255)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_fc2or")
+action = "start_stop"
+
+[node name="more_mass" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(-21, -632)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_hsih5")
+action = "more_mass"
+
+[node name="more_vol" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(-42, -349)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("3_hsih5")
+action = "more_vol"
+
+[node name="less_mass" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(-160, -633)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("4_gywgv")
+action = "less_mass"
+
+[node name="less_vol" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(-99, -349)
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("4_gywgv")
+action = "less_vol"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_offset = Vector2(90, 0)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(1, 0, 0.686275, 1)
+texture_filter = 1
+position = Vector2(634, 353)
+scale = Vector2(0.673, 0.673)
+texture = ExtResource("1_jtktg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+script = ExtResource("4_4mu83")
+speed = 1.0
+
+[node name="stage" type="Node2D" parent="Camera2D"]
+position = Vector2(-640, -360)
+script = ExtResource("4_jfgr6")
+
+[node name="TextEdit" type="TextEdit" parent="Camera2D"]
+modulate = Color(1, 1, 1, 0.67451)
+offset_left = 492.0
+offset_top = -307.0
+offset_right = 567.0
+offset_bottom = -270.0
+theme_override_fonts/font = SubResource("FontFile_w71co")
+text = "0
+
+"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="prev" type="Sprite2D" parent="Camera2D"]
+modulate = Color(1, 1, 1, 0.376471)
+position = Vector2(518, -146)
+texture = ExtResource("6_gfdjo")
+
+[node name="buttons" type="Node" parent="Camera2D"]

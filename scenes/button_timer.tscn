@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2bsm1eqd68u2"]
+
+[ext_resource type="Script" path="res://scenes/button_timer.gd" id="1_fvrct"]
+
+[node name="ButtonTimer" type="Timer"]
+wait_time = 0.12
+autostart = true
+script = ExtResource("1_fvrct")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]
