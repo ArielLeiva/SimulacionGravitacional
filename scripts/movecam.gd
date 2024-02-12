@@ -16,7 +16,7 @@ func camera_to_global(coordinate):
 	return coordinate * (1/zoom.x) - Vector2(-640*(1-1/zoom.x),-360*(1-1/zoom.x)) + offset
 
 func _process(delta):
-	#position.x += speed
+	var des_offset = offset
 	des_zoom = clamp(des_zoom, min_zoom, max_zoom)
 	zoom = lerp(zoom, des_zoom, 0.1)
 	
@@ -35,13 +35,14 @@ func _process(delta):
 		old_offset = offset
 		old_mouse = (get_viewport().get_mouse_position())
 	elif drag_held:
-		offset = old_offset + (1/zoom.x)*(old_mouse - get_viewport().get_mouse_position())
+		des_offset = old_offset + (1/zoom.x)*(old_mouse - get_viewport().get_mouse_position())
 		if Input.is_action_just_released("drag_camera"):
 			drag_held = false
 		
 	vel = vel.normalized()
 	
-	offset += delta * speed *vel
+	des_offset += delta * speed *vel
+	offset = des_offset.clamp(Vector2(-glob.w_limit, -glob.h_limit), Vector2(glob.w_limit, glob.h_limit))
 	
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
