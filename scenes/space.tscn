@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://d3i80ym3tqa2e"]
 
-[ext_resource type="Script" path="res://scenes/screen.gd" id="1_dsoru"]
+[ext_resource type="Script" path="res://scripts/screen.gd" id="1_dsoru"]
 [ext_resource type="Texture2D" uid="uid://blhr5qcj8mc1a" path="res://assets/fondo.png" id="1_jtktg"]
 [ext_resource type="Texture2D" uid="uid://bq3r5xdeeakn6" path="res://assets/stop.png" id="3_fc2or"]
 [ext_resource type="Texture2D" uid="uid://dfr0gwenfw7w0" path="res://assets/more.png" id="3_hsih5"]
-[ext_resource type="Script" path="res://scenes/movecam.gd" id="4_4mu83"]
+[ext_resource type="Script" path="res://scripts/movecam.gd" id="4_4mu83"]
 [ext_resource type="Texture2D" uid="uid://c7agfl815n7ih" path="res://assets/less.png" id="4_gywgv"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="4_jfgr6"]
 [ext_resource type="Texture2D" uid="uid://4famnhsrskd4" path="res://assets/electron.png" id="6_gfdjo"]
@@ -82,7 +82,6 @@ texture = ExtResource("1_jtktg")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 360)
 script = ExtResource("4_4mu83")
-speed = 1.0
 
 [node name="stage" type="Node2D" parent="Camera2D"]
 position = Vector2(-640, -360)
