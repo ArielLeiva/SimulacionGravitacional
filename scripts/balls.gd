@@ -2,6 +2,7 @@ extends RigidBody2D
 
 @onready var col = $CollisionShape2D
 @onready var sprite = $Sprite2D
+var camera = Camera2D
 
 var proportion = 1
 
@@ -12,14 +13,14 @@ func _ready():
 	col.shape = CircleShape2D.new()
 	col.position.x = 2
 	col.position.y = 2
-	print(col.shape.radius)
 	col.shape.radius = proportion * glob.base_ball_col_size
 	sprite.scale = Vector2(proportion, proportion)
+	camera = get_tree().get_first_node_in_group("camera")
 	
 func _unhandled_input(event):
 	#TODO: Support mobile ball deleting
 	if event.is_pressed() and ((event is InputEventMouseButton and event.is_action("r_click"))):
-		if is_inside_ball(event.position):
+		if is_inside_ball(camera.camera_to_global(event.position)):
 			print(get_parent())
 			queue_free()
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-var blo = preload("res://scenes/balls.tscn")
+var ball = preload("res://scenes/balls.tscn")
 var button_timer = preload("res://scenes/button_timer.tscn")
 var mouse_pos = Vector2.ZERO
 
@@ -12,17 +12,22 @@ enum vals {addm, subm, addv, subv}
 
 var actions = ["more_mass", "less_mass", "more_vol", "less_vol"]
 var conds = [add_mass, sub_mass, add_vol, sub_vol]
+var base_m = Transform2D()
+var camera = Camera2D
 
-
-func inside(coord):
+func inside_camera(coord):
 	return (coord.x <= 900 && coord.x > 50 && coord.y >= 0 && coord.y < 900)
+
+func _ready():
+	camera = get_tree().get_first_node_in_group("camera")
 
 func _unhandled_input(event):
 	if event.is_action_pressed("spawn"):
 		mouse_pos = event.position
-		if inside(mouse_pos):
-			var x = blo.instantiate()
-			x.position = mouse_pos
+		if inside_camera(mouse_pos):
+			var x = ball.instantiate()
+			x.position = camera.camera_to_global(mouse_pos)
+			print(x.position)
 			x.mass = glob.new_mass
 			x.proportion = glob.new_vol
 			add_child(x)
