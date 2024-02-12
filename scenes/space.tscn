@@ -1,51 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3i80ym3tqa2e"]
+[gd_scene load_steps=6 format=3 uid="uid://d3i80ym3tqa2e"]
 
-[ext_resource type="Script" path="res://scenes/node_killing.gd" id="1_nfcpq"]
+[ext_resource type="PackedScene" uid="uid://7x1we8o3gs3j" path="res://scenes/container.tscn" id="1_fgcaj"]
 [ext_resource type="PackedScene" uid="uid://ds146y5rievr3" path="res://scenes/UI.tscn" id="2_leqvt"]
-[ext_resource type="Texture2D" uid="uid://blhr5qcj8mc1a" path="res://assets/fondo.png" id="5_kxbt0"]
 [ext_resource type="Texture2D" uid="uid://c7agfl815n7ih" path="res://assets/less.png" id="6_3m55n"]
 [ext_resource type="Script" path="res://scripts/movecam.gd" id="6_nfv5j"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="7_netmt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lune6"]
-size = Vector2(6400, 3900)
-
 [node name="Node2D" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-
-[node name="LivingZone" type="Area2D" parent="."]
-script = ExtResource("1_nfcpq")
-
-[node name="TextureRect" type="TextureRect" parent="LivingZone"]
-offset_left = -8253.0
-offset_top = -5009.0
-offset_right = 9205.0
-offset_bottom = 3741.0
-texture = ExtResource("5_kxbt0")
-stretch_mode = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LivingZone"]
-position = Vector2(640, 360)
-shape = SubResource("RectangleShape2D_lune6")
+[node name="container" parent="." instance=ExtResource("1_fgcaj")]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_leqvt")]
-visible = false
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_offset = Vector2(90, 0)
-motion_mirroring = Vector2(1280, 0)
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-modulate = Color(1, 0, 0.686275, 1)
-texture_filter = 1
-position = Vector2(634, 353)
-scale = Vector2(0.673, 0.673)
-texture = ExtResource("5_kxbt0")
 
 [node name="Camera" type="Camera2D" parent="." groups=["camera"]]
 position = Vector2(640, 360)
@@ -62,6 +27,3 @@ visible = false
 position = Vector2(637, 0)
 scale = Vector2(15.975, 1)
 texture = ExtResource("6_3m55n")
-
-[connection signal="area_exited" from="LivingZone" to="LivingZone" method="_on_area_exited"]
-[connection signal="body_exited" from="LivingZone" to="LivingZone" method="_on_body_exited"]

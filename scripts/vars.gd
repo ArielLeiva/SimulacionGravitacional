@@ -8,6 +8,8 @@ const base_ball_size = 60
 const base_ball_col_size = 33.9558982849121
 const w_limit = 1280
 const h_limit = 720
+const limit = Vector2(w_limit, h_limit)
+
 
 func _ready():
 	pass
