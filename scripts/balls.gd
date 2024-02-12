@@ -21,10 +21,9 @@ func _unhandled_input(event):
 	#TODO: Support mobile ball deleting
 	if event.is_pressed() and ((event is InputEventMouseButton and event.is_action("r_click"))):
 		if is_inside_ball(camera.camera_to_global(event.position)):
-			print(get_parent())
 			queue_free()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if glob.attract:
 		var rsqr = 0
 		for x in get_tree().get_nodes_in_group("balls"):

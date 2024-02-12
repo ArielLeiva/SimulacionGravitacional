@@ -1,19 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3i80ym3tqa2e"]
+[gd_scene load_steps=6 format=3 uid="uid://d3i80ym3tqa2e"]
 
 [ext_resource type="PackedScene" uid="uid://ds146y5rievr3" path="res://scenes/UI.tscn" id="2_leqvt"]
 [ext_resource type="Texture2D" uid="uid://blhr5qcj8mc1a" path="res://assets/fondo.png" id="5_kxbt0"]
 [ext_resource type="Script" path="res://scripts/movecam.gd" id="6_nfv5j"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="7_netmt"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lune6"]
+size = Vector2(2562, 1440)
+
 [node name="Node2D" type="Node2D"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Area2D"]
 offset_left = -8253.0
 offset_top = -5009.0
 offset_right = 9205.0
 offset_bottom = 3741.0
 texture = ExtResource("5_kxbt0")
 stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(642, 361)
+shape = SubResource("RectangleShape2D_lune6")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_leqvt")]
 

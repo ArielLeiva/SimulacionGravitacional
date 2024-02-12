@@ -23,7 +23,6 @@ func _ready():
 func _on_timeout():
 	
 	if !st.conds[button_id]:
-		print("Destruido")
 		queue_free()
 	else:
 		change(button_id)

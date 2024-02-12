@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://d0qqbg43hwkee" path="res://assets/ball.png" id="2_4onni"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j0yhm"]
+friction = 0.0
+bounce = 0.7
 
 [node name="Ball" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_j0yhm")

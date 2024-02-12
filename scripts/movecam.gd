@@ -1,13 +1,11 @@
 extends Camera2D
 
-@onready var txt = $TextEdit
-@onready var prev = $prev
 @export var speed: float = 500
 var drag_held: bool = false
 
-var min = Vector2(0.2,0.2)
-var max = Vector2(2,2)
-var des_zoom = Vector2(1,1)
+var min_zoom = Vector2(0.2,0.2)
+var max_zoom = Vector2(2,2)
+var des_zoom = Vector2(0.5,0.5)
 var zoom_speed = 0.1
 # Used for camera drag
 var old_offset = Vector2.ZERO
@@ -19,7 +17,7 @@ func camera_to_global(coordinate):
 
 func _process(delta):
 	#position.x += speed
-	des_zoom = clamp(des_zoom, min, max)
+	des_zoom = clamp(des_zoom, min_zoom, max_zoom)
 	zoom = lerp(zoom, des_zoom, 0.1)
 	
 	var vel = Vector2(0,0)
@@ -49,8 +47,8 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			if (event.button_index == MOUSE_BUTTON_WHEEL_UP):
-				if(des_zoom < max):
+				if(des_zoom < max_zoom):
 					des_zoom += Vector2(zoom_speed, zoom_speed)
 			if (event.button_index == MOUSE_BUTTON_WHEEL_DOWN):
-				if (des_zoom > min):
+				if (des_zoom > min_zoom):
 					des_zoom -= Vector2(zoom_speed, zoom_speed)
