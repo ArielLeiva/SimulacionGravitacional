@@ -1,6 +1,6 @@
 extends Node2D
 
-var blo = preload("res://scenes/blo.tscn")
+var blo = preload("res://scenes/balls.tscn")
 var button_timer = preload("res://scenes/button_timer.tscn")
 var mouse_pos = Vector2.ZERO
 
@@ -17,18 +17,16 @@ var conds = [add_mass, sub_mass, add_vol, sub_vol]
 func inside(coord):
 	return (coord.x <= 900 && coord.x > 50 && coord.y >= 0 && coord.y < 900)
 
-func _input(event):
-	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT) or event is InputEventScreenTouch:
-		if event.pressed:
-			mouse_pos = event.position
-			if inside(mouse_pos):
-				var x = blo.instantiate()
-				x.position = mouse_pos
-				x.mass = glob.new_mass
-				x.scale = Vector2(glob.new_vol,glob.new_vol)
-				add_child(x)
-				glob.blos.append(x)
-				
+func _unhandled_input(event):
+	if event.is_action_pressed("spawn"):
+		mouse_pos = event.position
+		if inside(mouse_pos):
+			var x = blo.instantiate()
+			x.position = mouse_pos
+			x.mass = glob.new_mass
+			x.proportion = glob.new_vol
+			add_child(x)
+			x.add_to_group("balls")
 	elif event is InputEventKey and (event.keycode == KEY_SPACE and event.is_pressed()) or event.is_action_pressed("start_stop"):
 		glob.attract = !glob.attract
 	
