@@ -10,13 +10,13 @@ var des_zoom = Vector2(1,1)
 var zoom_speed = 0.1
 
 func camera_to_global(coordinate):
-	return coordinate * (1/zoom.x) - Vector2(-640*(1-1/zoom.x),-360*(1-1/zoom.x))
+	return coordinate * (1/zoom.x) - Vector2(-640*(1-1/zoom.x),-360*(1-1/zoom.x)) + offset
 
 func _process(delta):
 	position.x += speed
 	des_zoom = clamp(des_zoom, min, max)
 	zoom = lerp(zoom, des_zoom, 0.1)
-
+	
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed():

@@ -1,102 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3i80ym3tqa2e"]
+[gd_scene load_steps=5 format=3 uid="uid://d3i80ym3tqa2e"]
 
-[ext_resource type="Script" path="res://scripts/screen.gd" id="1_gnufj"]
-[ext_resource type="Texture2D" uid="uid://bq3r5xdeeakn6" path="res://assets/stop.png" id="2_o1q0k"]
-[ext_resource type="Texture2D" uid="uid://dfr0gwenfw7w0" path="res://assets/more.png" id="3_l4k3k"]
-[ext_resource type="Texture2D" uid="uid://c7agfl815n7ih" path="res://assets/less.png" id="4_47236"]
+[ext_resource type="PackedScene" uid="uid://ds146y5rievr3" path="res://scenes/UI.tscn" id="2_leqvt"]
 [ext_resource type="Texture2D" uid="uid://blhr5qcj8mc1a" path="res://assets/fondo.png" id="5_kxbt0"]
-[ext_resource type="Script" path="res://scenes/TextEdit.gd" id="5_vfidi"]
 [ext_resource type="Script" path="res://scripts/movecam.gd" id="6_nfv5j"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="7_netmt"]
-[ext_resource type="Texture2D" uid="uid://4famnhsrskd4" path="res://assets/electron.png" id="8_vdbr3"]
-[ext_resource type="Script" path="res://scenes/prev.gd" id="9_psb0m"]
-
-[sub_resource type="FontFile" id="FontFile_w71co"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("1_gnufj")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -38.0
-offset_top = -38.0
-offset_right = 2.0
-offset_bottom = 2.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="start_stop" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
-modulate = Color(1, 1, 1, 0.309804)
-position = Vector2(-254, -255)
-scale = Vector2(2, 2)
-texture_normal = ExtResource("2_o1q0k")
-action = "start_stop"
-
-[node name="more_mass" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
-position = Vector2(-21, -632)
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("3_l4k3k")
-action = "more_mass"
-
-[node name="more_vol" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
-position = Vector2(-42, -349)
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("3_l4k3k")
-action = "more_vol"
-
-[node name="less_mass" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
-position = Vector2(-160, -633)
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("4_47236")
-action = "less_mass"
-
-[node name="less_vol" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
-position = Vector2(-99, -349)
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("4_47236")
-action = "less_vol"
-
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer/HBoxContainer"]
-modulate = Color(1, 1, 1, 0.67451)
-layout_mode = 2
-theme_override_fonts/font = SubResource("FontFile_w71co")
-text = "0
-
-"
-editable = false
-context_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-virtual_keyboard_enabled = false
-middle_mouse_paste_enabled = false
-script = ExtResource("5_vfidi")
-
-[node name="prev" type="Sprite2D" parent="CanvasLayer/HBoxContainer"]
-modulate = Color(1, 1, 1, 0.376471)
-position = Vector2(-84, -468)
-texture = ExtResource("8_vdbr3")
-script = ExtResource("9_psb0m")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0.686275, 1)
-texture_filter = 1
-position = Vector2(634, 353)
-scale = Vector2(0.673, 0.673)
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -8253.0
+offset_top = -5009.0
+offset_right = 9205.0
+offset_bottom = 3741.0
 texture = ExtResource("5_kxbt0")
+stretch_mode = 1
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_leqvt")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 visible = false
@@ -114,6 +33,7 @@ texture = ExtResource("5_kxbt0")
 
 [node name="Camera" type="Camera2D" parent="." groups=["camera"]]
 position = Vector2(640, 360)
+zoom = Vector2(0.5, 0.5)
 script = ExtResource("6_nfv5j")
 
 [node name="buttons" type="Node" parent="Camera"]
