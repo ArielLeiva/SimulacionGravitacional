@@ -8,7 +8,7 @@ var cont_height = 0
 var cont_limit = Vector2.ZERO
 var camera_limit = Vector2(1280,720)
 
-var min_zoom = Vector2(0.2,0.2)
+var min_zoom = Vector2(0.17,0.17)
 var max_zoom = Vector2(2,2)
 var des_zoom = Vector2(0.5,0.5)
 var zoom_speed = 0.1

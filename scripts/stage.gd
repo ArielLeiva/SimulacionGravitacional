@@ -1,8 +1,13 @@
 extends Node2D
 
+@onready var arrow = $Arrow
 var ball = preload("res://scenes/balls.tscn")
 var button_timer = preload("res://scenes/button_timer.tscn")
-var mouse_pos = Vector2.ZERO
+var clicked_pos = Vector2.ZERO
+var global_clicked_pos = Vector2.ZERO
+var click_held: bool = false
+# For an initial velocity
+var init_vector = Vector2.ZERO
 
 var fast_forward = false
 var add_mass = false
@@ -21,16 +26,12 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("spawn"):
-		mouse_pos = event.position
-		print(mouse_pos)
-		var global_pos = camera.camera_to_global(mouse_pos)
-		if camera.inside_camera(mouse_pos) and camera.inside_container(global_pos):
-			var x = ball.instantiate()
-			x.position = global_pos
-			x.mass = glob.new_mass
-			x.proportion = glob.new_vol
-			add_child(x)
-			x.add_to_group("balls")
+		clicked_pos = event.position
+		global_clicked_pos = camera.camera_to_global(clicked_pos)
+		if camera.inside_camera(clicked_pos) and camera.inside_container(global_clicked_pos):
+			click_held = true
+			arrow.position = global_clicked_pos
+			arrow.visible = true
 	elif event is InputEventKey and (event.keycode == KEY_SPACE and event.is_pressed()) or event.is_action_pressed("start_stop"):
 		glob.attract = !glob.attract
 	if event.is_action_pressed("fast_forward"):
@@ -39,7 +40,8 @@ func _unhandled_input(event):
 		Engine.time_scale /= 2
 	elif event.is_action_pressed("reset_speed"):
 		Engine.time_scale = 1
-			
+	elif event.is_action_pressed("restart_scene"):
+		get_tree().reload_current_scene()
 	
 	var i = 0
 	for a in actions:
@@ -52,4 +54,25 @@ func _unhandled_input(event):
 			conds[i] = false
 		i += 1
 
-
+func _process(delta):
+	
+	if Input.is_action_pressed("r_click"):
+		arrow.visible = false	
+		click_held = false
+	# Ball initial velocity set
+	elif click_held:
+		if Input.is_action_pressed("l_click"):
+			var present_click = get_viewport().get_mouse_position()
+			init_vector = present_click - clicked_pos
+			arrow.look_and_scale(init_vector / camera.zoom.x)
+		elif Input.is_action_just_released("l_click"):
+			var x = ball.instantiate()
+			x.position = global_clicked_pos
+			x.mass = glob.new_mass
+			x.proportion = glob.new_vol
+			x.linear_velocity = init_vector / camera.zoom.x
+			add_child(x)
+			x.add_to_group("balls")
+			# Hide arrow
+			arrow.visible = false
+			click_held = false

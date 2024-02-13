@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://hq4uhs38wskj"]
+
+[ext_resource type="Texture2D" uid="uid://c5llexpitfhqg" path="res://assets/flecha.png" id="1_eaqyx"]
+[ext_resource type="Script" path="res://scenes/arrow.gd" id="1_sbngf"]
+
+[node name="Arrow" type="Node2D"]
+script = ExtResource("1_sbngf")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(360, 8.985)
+texture = ExtResource("1_eaqyx")

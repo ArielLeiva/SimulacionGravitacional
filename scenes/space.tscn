@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3i80ym3tqa2e"]
+[gd_scene load_steps=6 format=3 uid="uid://d3i80ym3tqa2e"]
 
 [ext_resource type="PackedScene" uid="uid://7x1we8o3gs3j" path="res://scenes/container.tscn" id="1_fgcaj"]
 [ext_resource type="PackedScene" uid="uid://ds146y5rievr3" path="res://scenes/UI.tscn" id="2_leqvt"]
+[ext_resource type="PackedScene" uid="uid://hq4uhs38wskj" path="res://scenes/arrow.tscn" id="5_pxeq6"]
 [ext_resource type="Script" path="res://scripts/movecam.gd" id="6_nfv5j"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="7_netmt"]
 
@@ -19,3 +20,7 @@ script = ExtResource("6_nfv5j")
 
 [node name="stage" type="Node2D" parent="."]
 script = ExtResource("7_netmt")
+
+[node name="Arrow" parent="stage" instance=ExtResource("5_pxeq6")]
+visible = false
+modulate = Color(1, 1, 1, 0.447059)

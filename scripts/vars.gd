@@ -12,8 +12,6 @@ const limit = Vector2(w_limit, h_limit)
 var sprites = []
 var new_sprite = Texture2D
 
-@onready var prev = get_tree().get_first_node_in_group("previsualization")
-
 func load_sprites():
 	var path = "res://assets/celestial_bodies/"
 	var dir = DirAccess.open(path)
@@ -32,16 +30,19 @@ func load_sprites():
 		print("Directory not found")
 
 func set_random_sprite():
+	var prev = get_tree().get_first_node_in_group("previsualization")
 	if sprites:
 		new_sprite = sprites[randi() % sprites.size()]
+		if prev:
+			prev.texture = new_sprite
+		else:
+			print("Warning: No previsualization setted")
 	else:
 		print("No sprite found")
-	prev.texture = new_sprite
 
 func _ready():
 	# Loading prites that will be used to create balls
 	load_sprites()
 	# Setting first sprite and updating previsualization
 	set_random_sprite()
-	
 	pass
