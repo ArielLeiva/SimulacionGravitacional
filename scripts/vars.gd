@@ -1,8 +1,14 @@
 extends Node
 
 var attract: bool = false
-var new_mass: float = 200
+var new_mass: float = 100
+@export var max_mass: float = 2**25
+@export var min_mass: float = 100
+
 var new_vol: float = 1
+@export var min_vol: float = 3
+@export var max_vol: float = 0.02
+
 const base_ball_size = 60
 # Best collision size obtained by trial and error
 const base_ball_col_size = 59.5

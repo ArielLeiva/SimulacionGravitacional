@@ -26,6 +26,7 @@ texture = ExtResource("2_nynu6")
 stretch_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LivingZone" groups=["container"]]
+visible = false
 shape = SubResource("RectangleShape2D_6ujro")
 
 [node name="walls" type="StaticBody2D" parent="."]

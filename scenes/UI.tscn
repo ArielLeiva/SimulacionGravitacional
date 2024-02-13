@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ds146y5rievr3"]
+[gd_scene load_steps=7 format=3 uid="uid://ds146y5rievr3"]
 
 [ext_resource type="Script" path="res://scripts/screen.gd" id="1_e3c31"]
 [ext_resource type="Texture2D" uid="uid://bq3r5xdeeakn6" path="res://assets/stop.png" id="2_oec4u"]
@@ -6,9 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c7agfl815n7ih" path="res://assets/less.png" id="4_pu8g2"]
 [ext_resource type="Texture2D" uid="uid://4famnhsrskd4" path="res://assets/electron.png" id="5_w1w1x"]
 [ext_resource type="Script" path="res://scenes/prev.gd" id="6_4seju"]
-[ext_resource type="Script" path="res://scripts/mass.gd" id="7_4qdln"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer"]
 script = ExtResource("1_e3c31")
 
 [node name="Buttons2" type="HBoxContainer" parent="."]
@@ -55,35 +54,22 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("4_pu8g2")
 action = "less_vol"
 
-[node name="prev" type="Sprite2D" parent="Buttons2" groups=["previsualization"]]
-modulate = Color(1, 1, 1, 0.376471)
-position = Vector2(-84, -468)
-texture = ExtResource("5_w1w1x")
-script = ExtResource("6_4seju")
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-visible = false
 offset_left = 1133.0
 offset_top = 52.0
 offset_right = 1216.0
 offset_bottom = 91.0
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+[node name="mass_counter" type="LineEdit" parent="VBoxContainer" groups=["mass_counter"]]
 layout_mode = 2
-text = "pepe"
+text = "100"
 expand_to_text_length = true
 clear_button_enabled = true
 
-[node name="Mass2" type="HBoxContainer" parent="."]
-offset_left = 1153.0
-offset_top = 49.0
-offset_right = 1198.0
-offset_bottom = 88.0
+[node name="prev" type="Sprite2D" parent="VBoxContainer" groups=["previsualization"]]
+modulate = Color(1, 1, 1, 0.376471)
+position = Vector2(25, 162)
+texture = ExtResource("5_w1w1x")
+script = ExtResource("6_4seju")
 
-[node name="Label" type="Label" parent="Mass2"]
-modulate = Color(1, 1, 1, 0.666667)
-layout_mode = 2
-text = "100"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("7_4qdln")
+[connection signal="text_submitted" from="VBoxContainer/mass_counter" to="." method="_on_line_edit_text_submitted"]

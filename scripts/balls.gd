@@ -28,10 +28,11 @@ func _unhandled_input(event):
 		if is_inside_ball(camera.camera_to_global(event.position)):
 			queue_free()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if glob.attract:
 		var rsqr = 0
 		for x in get_tree().get_nodes_in_group("balls"):
 			rsqr = x.position.distance_squared_to(position)
-			if rsqr != 0:
-				x.apply_central_impulse(1000 * mass * x.position.direction_to(position) / rsqr)
+			if rsqr != 0 :
+				#x.apply_central_impulse(1000 * mass * x.position.direction_to(position) / rsqr)
+				x.apply_force(x.position.direction_to(position)*((clamp(100000 * delta * mass * rsqr, 0, 9000))))

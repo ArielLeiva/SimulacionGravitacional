@@ -54,7 +54,7 @@ func _unhandled_input(event):
 			conds[i] = false
 		i += 1
 
-func _process(delta):
+func _process(_delta):
 	
 	if Input.is_action_pressed("r_click"):
 		arrow.visible = false	
@@ -68,6 +68,7 @@ func _process(delta):
 		elif Input.is_action_just_released("l_click"):
 			var x = ball.instantiate()
 			x.position = global_clicked_pos
+			print(glob.new_mass)
 			x.mass = glob.new_mass
 			x.proportion = glob.new_vol
 			x.linear_velocity = init_vector / camera.zoom.x

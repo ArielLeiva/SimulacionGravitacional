@@ -34,6 +34,7 @@ func _process(delta):
 	var des_offset = offset
 	des_zoom = clamp(des_zoom, min_zoom, max_zoom)
 	zoom = lerp(zoom, des_zoom, 0.1)
+	get_tree().get_first_node_in_group("previsualization").update_scale()
 	cont_limit = Vector2((cont_width-1280/zoom.x)/2, (cont_height - 720/zoom.y)/2)
 	
 	var vel = Vector2(0,0)
