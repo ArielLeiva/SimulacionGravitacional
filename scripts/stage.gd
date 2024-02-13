@@ -16,18 +16,17 @@ var conds = [add_mass, sub_mass, add_vol, sub_vol]
 var base_m = Transform2D()
 var camera = Camera2D
 
-func inside_camera(coord):
-	return (coord.x <= 900 && coord.x > 50 && coord.y >= 0 && coord.y < 900)
-
 func _ready():
 	camera = get_tree().get_first_node_in_group("camera")
 
 func _unhandled_input(event):
 	if event.is_action_pressed("spawn"):
 		mouse_pos = event.position
-		if inside_camera(mouse_pos):
+		print(mouse_pos)
+		var global_pos = camera.camera_to_global(mouse_pos)
+		if camera.inside_camera(mouse_pos) and camera.inside_container(global_pos):
 			var x = ball.instantiate()
-			x.position = camera.camera_to_global(mouse_pos)
+			x.position = global_pos
 			x.mass = glob.new_mass
 			x.proportion = glob.new_vol
 			add_child(x)
