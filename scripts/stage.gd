@@ -35,12 +35,11 @@ func _unhandled_input(event):
 	elif event is InputEventKey and (event.keycode == KEY_SPACE and event.is_pressed()) or event.is_action_pressed("start_stop"):
 		glob.attract = !glob.attract
 	if event.is_action_pressed("fast_forward"):
-		if !fast_forward:
-			Engine.time_scale = 4
-			fast_forward = true
-		else:
-			Engine.time_scale = 1
-			fast_forward = false
+		Engine.time_scale *= 2
+	elif event.is_action_pressed("slow_forward"):
+		Engine.time_scale /= 2
+	elif event.is_action_pressed("reset_speed"):
+		Engine.time_scale = 1
 			
 	
 	var i = 0

@@ -15,7 +15,12 @@ func _ready():
 	col.position.y = 2
 	col.shape.radius = proportion * glob.base_ball_col_size
 	sprite.scale = Vector2(proportion, proportion)
+	sprite.texture = glob.new_sprite
+	# Picking some random skin for the next ball
+	glob.set_random_sprite()	
 	camera = get_tree().get_first_node_in_group("camera")
+	
+	
 	
 func _unhandled_input(event):
 	#TODO: Support mobile ball deleting

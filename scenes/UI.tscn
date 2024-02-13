@@ -55,7 +55,7 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("4_pu8g2")
 action = "less_vol"
 
-[node name="prev" type="Sprite2D" parent="Buttons2"]
+[node name="prev" type="Sprite2D" parent="Buttons2" groups=["previsualization"]]
 modulate = Color(1, 1, 1, 0.376471)
 position = Vector2(-84, -468)
 texture = ExtResource("5_w1w1x")

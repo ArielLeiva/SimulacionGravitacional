@@ -42,7 +42,7 @@ func _process(delta):
 	vel = vel.normalized()
 	
 	des_offset += delta * speed *vel
-	offset = des_offset.clamp(Vector2(-glob.w_limit, -glob.h_limit), Vector2(glob.w_limit, glob.h_limit))
+	offset = des_offset.clamp(Vector2(-1920, -1080), Vector2(1920, 1080))
 	
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
