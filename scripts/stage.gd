@@ -68,7 +68,6 @@ func _process(_delta):
 		elif Input.is_action_just_released("l_click"):
 			var x = ball.instantiate()
 			x.position = global_clicked_pos
-			print(glob.new_mass)
 			x.mass = glob.new_mass
 			x.proportion = glob.new_vol
 			x.linear_velocity = init_vector / camera.zoom.x

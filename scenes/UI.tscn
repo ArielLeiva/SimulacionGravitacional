@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bq3r5xdeeakn6" path="res://assets/stop.png" id="2_oec4u"]
 [ext_resource type="Texture2D" uid="uid://dfr0gwenfw7w0" path="res://assets/more.png" id="3_h5t4i"]
 [ext_resource type="Texture2D" uid="uid://c7agfl815n7ih" path="res://assets/less.png" id="4_pu8g2"]
-[ext_resource type="Texture2D" uid="uid://4famnhsrskd4" path="res://assets/electron.png" id="5_w1w1x"]
-[ext_resource type="Script" path="res://scenes/prev.gd" id="6_4seju"]
+[ext_resource type="Texture2D" uid="uid://cdum2p75dfjt7" path="res://assets/default.png" id="5_jw24e"]
+[ext_resource type="Script" path="res://scripts/prev.gd" id="6_n75wi"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_e3c31")
@@ -69,7 +69,7 @@ clear_button_enabled = true
 [node name="prev" type="Sprite2D" parent="VBoxContainer" groups=["previsualization"]]
 modulate = Color(1, 1, 1, 0.376471)
 position = Vector2(25, 162)
-texture = ExtResource("5_w1w1x")
-script = ExtResource("6_4seju")
+texture = ExtResource("5_jw24e")
+script = ExtResource("6_n75wi")
 
 [connection signal="text_submitted" from="VBoxContainer/mass_counter" to="." method="_on_line_edit_text_submitted"]

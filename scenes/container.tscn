@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://7x1we8o3gs3j"]
+[gd_scene load_steps=8 format=3 uid="uid://7x1we8o3gs3j"]
 
-[ext_resource type="Script" path="res://scenes/node_killing.gd" id="1_joepu"]
+[ext_resource type="Script" path="res://scenes/container.gd" id="1_ada0w"]
+[ext_resource type="Script" path="res://scripts/node_killing.gd" id="1_mei8t"]
+[ext_resource type="Script" path="res://scenes/parallax.gd" id="2_hmn4w"]
 [ext_resource type="Texture2D" uid="uid://blhr5qcj8mc1a" path="res://assets/fondo.png" id="2_nynu6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ujro"]
@@ -12,40 +14,48 @@ size = Vector2(10, 4320)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v3ujm"]
 size = Vector2(7680, 8)
 
-[node name="Node2D" type="Node2D"]
+[node name="container" type="Node2D"]
+script = ExtResource("1_ada0w")
 
 [node name="LivingZone" type="Area2D" parent="."]
-script = ExtResource("1_joepu")
-
-[node name="TextureRect" type="TextureRect" parent="LivingZone"]
-offset_left = -8253.0
-offset_top = -5009.0
-offset_right = 9205.0
-offset_bottom = 3741.0
-texture = ExtResource("2_nynu6")
-stretch_mode = 1
+script = ExtResource("1_mei8t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LivingZone" groups=["container"]]
 visible = false
 shape = SubResource("RectangleShape2D_6ujro")
+disabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="LivingZone"]
+script = ExtResource("2_hmn4w")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="LivingZone/ParallaxBackground"]
+motion_mirroring = Vector2(7680, 4320)
+
+[node name="TextureRect" type="TextureRect" parent="LivingZone/ParallaxBackground/ParallaxLayer"]
+offset_left = -9169.0
+offset_top = -5009.0
+offset_right = 9205.0
+offset_bottom = 5088.0
+texture = ExtResource("2_nynu6")
+stretch_mode = 1
 
 [node name="walls" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
+[node name="LeftWall" type="CollisionShape2D" parent="walls" groups=["collisions"]]
 position = Vector2(-3846, -2)
 shape = SubResource("RectangleShape2D_spnkb")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
+[node name="RightWall" type="CollisionShape2D" parent="walls" groups=["collisions"]]
 position = Vector2(3846, 1)
 shape = SubResource("RectangleShape2D_spnkb")
 
 [node name="up_down" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="up_down"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up_down" groups=["collisions"]]
 position = Vector2(0, -2181)
 shape = SubResource("RectangleShape2D_v3ujm")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="up_down"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="up_down" groups=["collisions"]]
 position = Vector2(0, 2166)
 shape = SubResource("RectangleShape2D_v3ujm")
 

@@ -8,6 +8,7 @@ var cont_height = 0
 var cont_limit = Vector2.ZERO
 var camera_limit = Vector2(1280,720)
 
+@export var limited_camera: bool = true
 var min_zoom = Vector2(0.17,0.17)
 var max_zoom = Vector2(2,2)
 var des_zoom = Vector2(0.5,0.5)
@@ -25,7 +26,7 @@ func inside_camera(coord):
 
 func inside_container(coord):
 	var cont_border = container.shape.size / 2
-	return coord < cont_border and coord >= -cont_border
+	return (coord < cont_border and coord >= -cont_border) or !limited_camera
 
 func camera_to_global(coordinate):
 	return coordinate * (1/zoom.x) - Vector2(1280/(2*zoom.x),720/(2*zoom.y)) + offset
@@ -37,6 +38,7 @@ func _process(delta):
 	get_tree().get_first_node_in_group("previsualization").update_scale()
 	cont_limit = Vector2((cont_width-1280/zoom.x)/2, (cont_height - 720/zoom.y)/2)
 	
+	# Camera keyboard moving
 	var vel = Vector2(0,0)
 	if Input.is_action_pressed("camera_up"):
 		vel.y -= 1
@@ -47,6 +49,7 @@ func _process(delta):
 	if Input.is_action_pressed("camera_right"):
 		vel.x += 1
 	
+	# Camera dragging movement
 	if (!drag_held and Input.is_action_pressed("drag_camera")):
 		drag_held = true
 		old_offset = offset
@@ -59,7 +62,10 @@ func _process(delta):
 	vel = vel.normalized()
 	
 	des_offset += delta * speed *vel
-	offset = des_offset.clamp(-cont_limit, cont_limit)
+	if limited_camera:
+		offset = des_offset.clamp(-cont_limit, cont_limit)
+	else:
+		offset = des_offset
 	
 func _unhandled_input(event):
 	if event is InputEventMouseButton:

@@ -27,8 +27,9 @@ func load_sprites():
 		var file_name = dir.get_next()
 		var sprite = Texture2D
 		while file_name != "":
-			if file_name.ends_with(".png"):
-				sprite = load(path + file_name)
+			print(file_name)
+			if file_name.ends_with(".png.import"):
+				sprite = load(path + file_name.trim_suffix(".import"))
 				sprites.append(sprite)
 			file_name = dir.get_next()
 		dir.list_dir_end()
@@ -37,7 +38,7 @@ func load_sprites():
 
 func set_random_sprite():
 	var prev = get_tree().get_first_node_in_group("previsualization")
-	if sprites:
+	if sprites.size() != 0:
 		new_sprite = sprites[randi() % sprites.size()]
 		if prev:
 			prev.texture = new_sprite

@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://7x1we8o3gs3j" path="res://scenes/container.tscn" id="1_fgcaj"]
 [ext_resource type="PackedScene" uid="uid://ds146y5rievr3" path="res://scenes/UI.tscn" id="2_leqvt"]
 [ext_resource type="PackedScene" uid="uid://hq4uhs38wskj" path="res://scenes/arrow.tscn" id="5_pxeq6"]
-[ext_resource type="AudioStream" uid="uid://ccpf1ud2lfcfs" path="res://assets/in_space.mp3" id="6_krmbk"]
+[ext_resource type="AudioStream" uid="uid://ccpf1ud2lfcfs" path="res://assets/music/in_space.mp3" id="6_krmbk"]
 [ext_resource type="Script" path="res://scripts/movecam.gd" id="6_nfv5j"]
-[ext_resource type="Script" path="res://scenes/Music.gd" id="7_kfu06"]
+[ext_resource type="Script" path="res://scripts/Music.gd" id="7_kfu06"]
 [ext_resource type="Script" path="res://scripts/stage.gd" id="7_netmt"]
 
 [node name="Node2D" type="Node2D"]
@@ -17,6 +17,7 @@
 [node name="Camera" type="Camera2D" parent="." groups=["camera"]]
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("6_nfv5j")
+limited_camera = false
 
 [node name="buttons" type="Node" parent="Camera"]
 
