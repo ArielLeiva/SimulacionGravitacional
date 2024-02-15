@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://7x1we8o3gs3j"]
 
-[ext_resource type="Script" path="res://scenes/container.gd" id="1_ada0w"]
+[ext_resource type="Script" path="res://scripts/container.gd" id="1_ada0w"]
 [ext_resource type="Script" path="res://scripts/node_killing.gd" id="1_mei8t"]
-[ext_resource type="Script" path="res://scenes/parallax.gd" id="2_hmn4w"]
 [ext_resource type="Texture2D" uid="uid://blhr5qcj8mc1a" path="res://assets/fondo.png" id="2_nynu6"]
+[ext_resource type="Script" path="res://scripts/parallax.gd" id="3_18l67"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ujro"]
 size = Vector2(7680, 4320)
@@ -26,7 +26,7 @@ shape = SubResource("RectangleShape2D_6ujro")
 disabled = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="LivingZone"]
-script = ExtResource("2_hmn4w")
+script = ExtResource("3_18l67")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="LivingZone/ParallaxBackground"]
 motion_mirroring = Vector2(7680, 4320)

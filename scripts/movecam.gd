@@ -22,7 +22,7 @@ func _ready():
 	cont_height = container.shape.size.y
 	
 func inside_camera(coord):
-	return coord < camera_limit and coord.x < 950 and coord >= Vector2.ZERO
+	return coord < camera_limit and coord >= Vector2.ZERO
 
 func inside_container(coord):
 	var cont_border = container.shape.size / 2

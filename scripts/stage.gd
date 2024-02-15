@@ -20,19 +20,27 @@ var actions = ["more_mass", "less_mass", "more_vol", "less_vol"]
 var conds = [add_mass, sub_mass, add_vol, sub_vol]
 var base_m = Transform2D()
 var camera = Camera2D
+var ui = CanvasLayer
 
 func _ready():
 	camera = get_tree().get_first_node_in_group("camera")
+	ui = get_tree().get_first_node_in_group("UI")
 
 func _unhandled_input(event):
-	if event.is_action_pressed("spawn"):
+	if glob.mode == glob.states.SPAWN_MODE and event.is_action_pressed("spawn"):
 		clicked_pos = event.position
 		global_clicked_pos = camera.camera_to_global(clicked_pos)
-		if camera.inside_camera(clicked_pos) and camera.inside_container(global_clicked_pos):
+		if !ui.inside_ui(clicked_pos) and camera.inside_camera(clicked_pos) and camera.inside_container(global_clicked_pos):
 			click_held = true
 			arrow.position = global_clicked_pos
 			arrow.visible = true
-	elif event is InputEventKey and (event.keycode == KEY_SPACE and event.is_pressed()) or event.is_action_pressed("start_stop"):
+	elif event.is_action_pressed("select_mode"):
+		glob.mode = glob.states.SELECT_MODE
+		get_tree().get_first_node_in_group("selection").enabled = true
+	elif event.is_action_pressed("spawn_mode"):
+		get_tree().get_first_node_in_group("selection").enabled = false
+		glob.mode = glob.states.SPAWN_MODE
+	elif event.is_action_pressed("gravity"):
 		glob.attract = !glob.attract
 	if event.is_action_pressed("fast_forward"):
 		Engine.time_scale *= 2

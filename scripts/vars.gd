@@ -18,6 +18,9 @@ const limit = Vector2(w_limit, h_limit)
 var sprites = []
 var new_sprite = Texture2D
 
+enum states { SPAWN_MODE, SELECT_MODE }
+var mode = states.SPAWN_MODE
+
 func load_sprites():
 	var path = "res://assets/celestial_bodies/"
 	var dir = DirAccess.open(path)
@@ -48,6 +51,8 @@ func set_random_sprite():
 		print("No sprite found")
 
 func _ready():
+	new_mass = 100
+	new_vol = 1
 	# Loading prites that will be used to create balls
 	load_sprites()
 	# Setting first sprite and updating previsualization

@@ -33,7 +33,8 @@ modulate = Color(1, 1, 1, 0.447059)
 stream = ExtResource("6_krmbk")
 script = ExtResource("7_kfu06")
 
-[node name="selection" parent="." instance=ExtResource("8_6fium")]
+[node name="selection" parent="." groups=["selection"] instance=ExtResource("8_6fium")]
 visible = false
+enabled = false
 
 [connection signal="finished" from="Music" to="Music" method="_on_finished"]
