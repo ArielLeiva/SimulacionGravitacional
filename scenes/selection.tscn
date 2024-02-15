@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxje02qt5d6rb"]
+
+[ext_resource type="Script" path="res://selection.gd" id="1_xmd1h"]
+[ext_resource type="Texture2D" uid="uid://dw11v6bx7yd3p" path="res://assets/selection.png" id="2_i4juv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wmb8"]
+
+[node name="selection" type="Area2D"]
+script = ExtResource("1_xmd1h")
+
+[node name="area" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3wmb8")
+
+[node name="sprite" type="Sprite2D" parent="area"]
+modulate = Color(1, 1, 1, 0.368627)
+position = Vector2(2.38419e-07, 2.98023e-07)
+texture = ExtResource("2_i4juv")
+
+[connection signal="child_entered_tree" from="area/sprite" to="." method="_on_sprite_child_entered_tree"]

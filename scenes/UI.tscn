@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds146y5rievr3"]
+[gd_scene load_steps=9 format=3 uid="uid://ds146y5rievr3"]
 
 [ext_resource type="Script" path="res://scripts/screen.gd" id="1_e3c31"]
 [ext_resource type="Texture2D" uid="uid://bq3r5xdeeakn6" path="res://assets/stop.png" id="2_oec4u"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c7agfl815n7ih" path="res://assets/less.png" id="4_pu8g2"]
 [ext_resource type="Texture2D" uid="uid://cdum2p75dfjt7" path="res://assets/default.png" id="5_jw24e"]
 [ext_resource type="Script" path="res://scripts/prev.gd" id="6_n75wi"]
+[ext_resource type="Texture2D" uid="uid://d32xer1lp26hf" path="res://assets/select_button_normal.png" id="7_tkr0y"]
+[ext_resource type="Texture2D" uid="uid://dwx0226m8ncew" path="res://assets/spawn_balls.png" id="8_obem2"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_e3c31")
@@ -71,5 +73,23 @@ modulate = Color(1, 1, 1, 0.376471)
 position = Vector2(25, 162)
 texture = ExtResource("5_jw24e")
 script = ExtResource("6_n75wi")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="VBoxContainer"]
+position = Vector2(-556, 541)
+scale = Vector2(1.955, 1.955)
+
+[node name="select" type="TouchScreenButton" parent="VBoxContainer/CanvasGroup"]
+modulate = Color(1, 1, 1, 0.501961)
+texture_filter = 1
+position = Vector2(16, -18)
+scale = Vector2(1.275, 1.35)
+texture_normal = ExtResource("7_tkr0y")
+
+[node name="spawn_balls" type="TouchScreenButton" parent="VBoxContainer/CanvasGroup"]
+modulate = Color(1, 1, 1, 0.501961)
+texture_filter = 1
+position = Vector2(-51, -18)
+scale = Vector2(1.275, 1.35)
+texture_normal = ExtResource("8_obem2")
 
 [connection signal="text_submitted" from="VBoxContainer/mass_counter" to="." method="_on_line_edit_text_submitted"]
