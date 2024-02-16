@@ -9,6 +9,7 @@ var camera = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
+	enabled = false
 	camera = get_tree().get_first_node_in_group("camera")
 	set_process(false)
 	set_physics_process(false)
@@ -35,7 +36,6 @@ func _process(_delta):
 		area.shape.size = moved.abs()
 		sprite.scale = area.shape.size/120
 		area.position = clicked_pos - moved/2
-
 	elif Input.is_action_just_released("l_click"):
 		visible = false
 		set_process(false)
@@ -44,3 +44,7 @@ func _process(_delta):
 func _on_body_entered(body):
 	if enabled:
 		body.add_to_group("selected")
+
+
+func _on_stage_mode_updated():
+	enabled = glob.mode == glob.states.SELECT_MODE

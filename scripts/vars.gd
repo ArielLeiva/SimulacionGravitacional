@@ -57,4 +57,5 @@ func _ready():
 	load_sprites()
 	# Setting first sprite and updating previsualization
 	set_random_sprite()
-	pass
+	# Setting initial mode
+	glob.mode = states.SPAWN_MODE
