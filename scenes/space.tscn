@@ -13,7 +13,7 @@
 
 [node name="container" parent="." instance=ExtResource("1_fgcaj")]
 
-[node name="CanvasLayer" parent="." instance=ExtResource("2_leqvt")]
+[node name="UI" parent="." instance=ExtResource("2_leqvt")]
 
 [node name="Camera" type="Camera2D" parent="." groups=["camera"]]
 zoom = Vector2(0.5, 0.5)
@@ -38,3 +38,6 @@ enabled = false
 [connection signal="mode_updated" from="stage" to="selection" method="_on_stage_mode_updated"]
 [connection signal="mode_updated" from="stage" to="spawn" method="_on_stage_mode_updated"]
 [connection signal="finished" from="Music" to="Music" method="_on_finished"]
+[connection signal="body_exited" from="selection" to="selection" method="_on_body_exited"]
+[connection signal="selection_clean" from="selection" to="UI" method="_on_selection_selection_clean"]
+[connection signal="selection_released" from="selection" to="UI" method="_on_selection_selection_released"]

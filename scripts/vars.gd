@@ -2,7 +2,7 @@ extends Node
 
 var attract: bool = false
 var new_mass: float = 100
-@export var max_mass: float = 2**25
+@export var max_mass: float = 2**20
 @export var min_mass: float = 100
 
 var new_vol: float = 1
@@ -50,7 +50,7 @@ func set_random_sprite():
 	else:
 		print("No sprite found")
 
-func _ready():
+func default():
 	new_mass = 100
 	new_vol = 1
 	# Loading prites that will be used to create balls
@@ -59,3 +59,7 @@ func _ready():
 	set_random_sprite()
 	# Setting initial mode
 	glob.mode = states.SPAWN_MODE
+	
+func _ready():
+	default()
+	

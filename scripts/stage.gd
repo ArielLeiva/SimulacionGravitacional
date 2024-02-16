@@ -32,6 +32,7 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("reset_speed"):
 		Engine.time_scale = 1
 	elif event.is_action_pressed("restart_scene"):
+		glob.default()
 		get_tree().reload_current_scene()
 	
 	var i = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ds146y5rievr3"]
+[gd_scene load_steps=11 format=3 uid="uid://ds146y5rievr3"]
 
 [ext_resource type="Script" path="res://scripts/screen.gd" id="1_e3c31"]
 [ext_resource type="Texture2D" uid="uid://dfr0gwenfw7w0" path="res://assets/more.png" id="3_h5t4i"]
@@ -9,17 +9,18 @@
 [ext_resource type="Texture2D" uid="uid://dwx0226m8ncew" path="res://assets/spawn_balls.png" id="8_obem2"]
 [ext_resource type="Texture2D" uid="uid://d2uwfe7q1h5m1" path="res://assets/gravity_button.png" id="8_vjo4c"]
 [ext_resource type="Texture2D" uid="uid://dmggqbt6qeg1l" path="res://assets/gravity_button_pressed.png" id="9_mmsnj"]
+[ext_resource type="Texture2D" uid="uid://bhln8cgnp6rn2" path="res://assets/follow_button.png" id="10_lkc1g"]
 
 [node name="UI" type="CanvasLayer" groups=["UI"]]
 script = ExtResource("1_e3c31")
 
-[node name="mass_vol_rect" type="ReferenceRect" parent="."]
+[node name="modes_rect" type="ReferenceRect" parent="."]
 offset_left = 520.0
 offset_top = 555.0
-offset_right = 900.0
-offset_bottom = 662.0
+offset_right = 1043.0
+offset_bottom = 664.0
 
-[node name="modes_rect" type="ReferenceRect" parent="."]
+[node name="mass_vol_rect" type="ReferenceRect" parent="."]
 offset_left = 1070.0
 offset_top = 32.0
 offset_right = 1272.0
@@ -108,5 +109,14 @@ scale = Vector2(1.275, 1.35)
 texture_normal = ExtResource("8_vjo4c")
 texture_pressed = ExtResource("9_mmsnj")
 action = "gravity"
+
+[node name="follow" type="TouchScreenButton" parent="VBoxContainer/CanvasGroup"]
+visible = false
+modulate = Color(1, 1, 1, 0.501961)
+texture_filter = 1
+position = Vector2(108.5, -23)
+scale = Vector2(1.275, 1.35)
+texture_normal = ExtResource("10_lkc1g")
+action = "follow"
 
 [connection signal="text_submitted" from="VBoxContainer/mass_counter" to="." method="_on_line_edit_text_submitted"]

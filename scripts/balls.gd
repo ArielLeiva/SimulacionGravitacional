@@ -2,6 +2,7 @@ extends RigidBody2D
 
 @onready var col = $CollisionShape2D
 @onready var sprite = $Sprite2D
+@export var force_cap = 100000
 var camera = Camera2D
 
 var proportion = 1
@@ -20,13 +21,14 @@ func _ready():
 	glob.set_random_sprite()	
 	camera = get_tree().get_first_node_in_group("camera")
 	
-	
-	
 func _unhandled_input(event):
-	#TODO: Support mobile ball deleting
 	if event.is_pressed() and ((event is InputEventMouseButton and event.is_action("r_click"))):
 		if is_inside_ball(camera.camera_to_global(event.position)):
 			queue_free()
+			
+		var ui = get_tree().get_first_node_in_group("UI")
+		if ui:
+			ui.update_ui()
 
 func _physics_process(delta):
 	if glob.attract:
@@ -35,4 +37,4 @@ func _physics_process(delta):
 			rsqr = x.position.distance_squared_to(position)
 			if rsqr != 0 :
 				#x.apply_central_impulse(1000 * mass * x.position.direction_to(position) / rsqr)
-				x.apply_force(x.position.direction_to(position)*((clamp(100000 * delta * mass * rsqr, 0, 9000))))
+				x.apply_force(x.position.direction_to(position)*((clamp(100000 * delta * mass * rsqr, 0, force_cap))))

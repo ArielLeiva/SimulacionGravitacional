@@ -1,18 +1,24 @@
 extends Area2D
 
+signal selection_released
+signal selection_clean
+
 @onready var area = $area
 @onready var sprite = $area/sprite
 var clicked_pos = Vector2.ZERO
 var camera = null
 @export var enabled = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func deactivate():
 	visible = false
-	enabled = false
-	camera = get_tree().get_first_node_in_group("camera")
 	set_process(false)
 	set_physics_process(false)
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	enabled = false
+	camera = get_tree().get_first_node_in_group("camera")
+	deactivate()
 
 func _input(event):
 	if enabled and event.is_action_pressed("l_click"):
@@ -24,11 +30,16 @@ func _input(event):
 		set_process(true)
 		set_physics_process(true)
 	elif event.is_action_pressed("delete"):
-		for ball in get_tree().get_nodes_in_group("selected"):
-			ball.queue_free()
+		for body in get_tree().get_nodes_in_group("selected"):
+			if body.is_in_group("balls"):
+				body.queue_free()
+				
+		selection_clean.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if Input.is_action_pressed("r_click"):
+		deactivate()	
 	if Input.is_action_pressed("l_click"):
 		var moved = clicked_pos - get_viewport().get_mouse_position()
 		if camera:
@@ -37,14 +48,21 @@ func _process(_delta):
 		sprite.scale = area.shape.size/120
 		area.position = clicked_pos - moved/2
 	elif Input.is_action_just_released("l_click"):
-		visible = false
-		set_process(false)
-		set_physics_process(false)
+		if get_tree().get_nodes_in_group("selected"):
+			selection_released.emit()
+		deactivate()
 
 func _on_body_entered(body):
 	if enabled:
 		body.add_to_group("selected")
+		body.modulate = Color(0,0.4,0.4)
 
+func _on_body_exited(body):
+	# TODO: Build a better unselection
+	#if body.is_in_group("selected"):
+		#body.remove_from_group("selected")
+		#body.modulate = Color(1,1,1)
+	pass
 
 func _on_stage_mode_updated():
 	enabled = glob.mode == glob.states.SELECT_MODE

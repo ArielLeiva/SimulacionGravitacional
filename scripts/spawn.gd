@@ -60,6 +60,5 @@ func _process(_delta):
 			# Hide arrow and stop processing
 			deactivate()
 
-
 func _on_stage_mode_updated():
 	enabled = glob.mode == glob.states.SPAWN_MODE
