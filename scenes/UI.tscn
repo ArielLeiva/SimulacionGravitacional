@@ -26,6 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://vkowbdxy7v7o" path="res://assets/modes/hide_ui.png" id="23_awhju"]
 
 [sub_resource type="FontFile" id="FontFile_7ojnd"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0

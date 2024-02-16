@@ -59,5 +59,3 @@ func _unhandled_input(event):
 			conds[i] = false
 		i += 1
 
-func _process(_delta):
-	pass
