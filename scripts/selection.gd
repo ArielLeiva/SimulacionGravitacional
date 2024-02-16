@@ -7,9 +7,12 @@ signal selection_clean
 @onready var sprite = $area/sprite
 var clicked_pos = Vector2.ZERO
 var camera = null
+var ui = null
 @export var enabled = true
+var click_held = false
 
 func deactivate():
+	click_held = false
 	visible = false
 	set_process(false)
 	set_physics_process(false)
@@ -18,17 +21,20 @@ func deactivate():
 func _ready():
 	enabled = false
 	camera = get_tree().get_first_node_in_group("camera")
+	ui = get_tree().get_first_node_in_group("UI")
 	deactivate()
 
 func _input(event):
 	if enabled and event.is_action_pressed("l_click"):
 		clicked_pos = event.position
-		if camera:
-			clicked_pos = camera.camera_to_global(clicked_pos)
-		area.position = clicked_pos
-		visible = true
-		set_process(true)
-		set_physics_process(true)
+		if !ui.inside_ui(clicked_pos):	
+			if camera:
+				clicked_pos = camera.camera_to_global(clicked_pos)
+			area.position = clicked_pos
+			click_held = true
+			visible = true
+			set_process(true)
+			set_physics_process(true)
 	elif event.is_action_pressed("delete"):
 		for body in get_tree().get_nodes_in_group("selected"):
 			if body.is_in_group("balls"):
@@ -59,9 +65,9 @@ func _on_body_entered(body):
 
 func _on_body_exited(body):
 	# TODO: Build a better unselection
-	#if body.is_in_group("selected"):
-		#body.remove_from_group("selected")
-		#body.modulate = Color(1,1,1)
+	if body.is_in_group("selected") and click_held:
+		body.remove_from_group("selected")
+		body.modulate = Color(1,1,1)
 	pass
 
 func _on_stage_mode_updated():
