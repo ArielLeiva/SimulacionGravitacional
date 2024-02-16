@@ -1,16 +1,16 @@
 extends CanvasLayer
 
 @onready var mass_counter = $VBoxContainer/mass_counter
-@onready var modes_rect = $modes_rect
-@onready var mass_vol_rect = $mass_vol_rect
-@onready var follow_button = $VBoxContainer/CanvasGroup/follow 
+@onready var rects = $rects
+@onready var follow_button = $VBoxContainer/modes/follow 
+@onready var trash_can = $VBoxContainer/modes/trash_can
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_viewport().size = DisplayServer.screen_get_size()
 
 func inside_ui(point):
-	return modes_rect.get_rect().has_point(point) or mass_vol_rect.get_rect().has_point(point)
+	return rects.has_point(point)
 
 func _on_line_edit_text_submitted(new_text):
 	if int(new_text) != 0:
@@ -23,9 +23,13 @@ func _on_line_edit_text_submitted(new_text):
 
 func update_ui():
 	follow_button.visible = !get_tree().get_nodes_in_group("selected").is_empty()
+	trash_can.visible = !get_tree().get_nodes_in_group("selected").is_empty()
 
-func _on_selection_selection_released():
-	follow_button.visible = true
 
-func _on_selection_selection_clean():
-	follow_button.visible = false
+func _on_visibility_changed():
+	if !visible:
+		for body in get_tree().get_nodes_in_group("selected"):
+			body.modulate = Color(1,1,1)
+	else:
+		for body in get_tree().get_nodes_in_group("selected"):
+			body.modulate = Color(0.5,0.9,0.9)

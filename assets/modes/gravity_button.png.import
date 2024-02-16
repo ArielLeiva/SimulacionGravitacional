@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmggqbt6qeg1l"
-path="res://.godot/imported/gravity_button_pressed.png-e8de4ef607714836f40413db5b40d49b.ctex"
+uid="uid://d2uwfe7q1h5m1"
+path="res://.godot/imported/gravity_button.png-7dcfd517f92dd45febb76b44db84cb07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gravity_button_pressed.png"
-dest_files=["res://.godot/imported/gravity_button_pressed.png-e8de4ef607714836f40413db5b40d49b.ctex"]
+source_file="res://assets/modes/gravity_button.png"
+dest_files=["res://.godot/imported/gravity_button.png-7dcfd517f92dd45febb76b44db84cb07.ctex"]
 
 [params]
 

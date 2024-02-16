@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5llexpitfhqg"
-path="res://.godot/imported/flecha.png-5ac9269d7735ed05a1784e711f09095d.ctex"
+uid="uid://bhln8cgnp6rn2"
+path="res://.godot/imported/follow_button.png-202e101c7fab6c032a80627b013d2666.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/flecha.png"
-dest_files=["res://.godot/imported/flecha.png-5ac9269d7735ed05a1784e711f09095d.ctex"]
+source_file="res://assets/modes/follow_button.png"
+dest_files=["res://.godot/imported/follow_button.png-202e101c7fab6c032a80627b013d2666.ctex"]
 
 [params]
 

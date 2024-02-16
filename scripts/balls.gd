@@ -24,8 +24,8 @@ func _ready():
 func _unhandled_input(event):
 	if event.is_pressed() and ((event is InputEventMouseButton and event.is_action("r_click"))):
 		if is_inside_ball(camera.camera_to_global(event.position)):
+			remove_from_group("selected")
 			queue_free()
-			
 		var ui = get_tree().get_first_node_in_group("UI")
 		if ui:
 			ui.update_ui()

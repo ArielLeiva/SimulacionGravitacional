@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d32xer1lp26hf"
-path="res://.godot/imported/select_button_normal.png-db20f604a4c5dd558fce859957948369.ctex"
+uid="uid://cp6knslc6tevq"
+path="res://.godot/imported/drag_mode_button.png-970bab0d02398a60d1aaf5db10ca2fe7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/select_button_normal.png"
-dest_files=["res://.godot/imported/select_button_normal.png-db20f604a4c5dd558fce859957948369.ctex"]
+source_file="res://assets/modes/drag_mode_button.png"
+dest_files=["res://.godot/imported/drag_mode_button.png-970bab0d02398a60d1aaf5db10ca2fe7.ctex"]
 
 [params]
 

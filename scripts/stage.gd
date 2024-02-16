@@ -12,16 +12,24 @@ enum vals {addm, subm, addv, subv}
 
 var actions = ["more_mass", "less_mass", "more_vol", "less_vol"]
 var conds = [add_mass, sub_mass, add_vol, sub_vol]
+var ui = null
 
 func _ready():
+	ui = get_tree().get_first_node_in_group("UI")
 	mode_updated.emit()
 
 func _unhandled_input(event):
-	if event.is_action_pressed("select_mode"):
+	if !ui.visible and event.is_action_pressed("l_click"):
+		if !ui.inside_ui(event.position): 
+			ui.visible = true		
+	elif event.is_action_pressed("select_mode"):
 		glob.mode = glob.states.SELECT_MODE
 		mode_updated.emit()
 	elif event.is_action_pressed("spawn_mode"):
 		glob.mode = glob.states.SPAWN_MODE
+		mode_updated.emit()
+	elif event.is_action_pressed("drag_mode"):
+		glob.mode = glob.states.DRAG_MODE
 		mode_updated.emit()
 	elif event.is_action_pressed("gravity"):
 		glob.attract = !glob.attract
@@ -31,9 +39,14 @@ func _unhandled_input(event):
 		Engine.time_scale /= 2
 	elif event.is_action_pressed("reset_speed"):
 		Engine.time_scale = 1
+		get_tree().paused = false
 	elif event.is_action_pressed("restart_scene"):
 		glob.default()
 		get_tree().reload_current_scene()
+	elif event.is_action_pressed("pause"):
+		get_tree().paused = !get_tree().paused
+	elif event.is_action_pressed("hide_ui"):
+		ui.visible = !ui.visible
 	
 	var i = 0
 	for a in actions:

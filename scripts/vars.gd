@@ -18,7 +18,7 @@ const limit = Vector2(w_limit, h_limit)
 var sprites = []
 var new_sprite = Texture2D
 
-enum states { SPAWN_MODE, SELECT_MODE }
+enum states { SPAWN_MODE, SELECT_MODE , DRAG_MODE}
 var mode = states.SPAWN_MODE
 
 func load_sprites():
@@ -53,6 +53,9 @@ func set_random_sprite():
 func default():
 	new_mass = 100
 	new_vol = 1
+	attract = false
+	get_tree().paused = false
+	
 	# Loading prites that will be used to create balls
 	load_sprites()
 	# Setting first sprite and updating previsualization

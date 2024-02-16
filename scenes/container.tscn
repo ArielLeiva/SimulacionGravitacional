@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/container.gd" id="1_ada0w"]
 [ext_resource type="Script" path="res://scripts/node_killing.gd" id="1_mei8t"]
-[ext_resource type="Texture2D" uid="uid://blhr5qcj8mc1a" path="res://assets/fondo.png" id="2_nynu6"]
+[ext_resource type="Texture2D" uid="uid://blhr5qcj8mc1a" path="res://assets/general/fondo.png" id="2_nynu6"]
 [ext_resource type="Script" path="res://scripts/parallax.gd" id="3_18l67"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ujro"]

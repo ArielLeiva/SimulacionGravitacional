@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwx0226m8ncew"
-path="res://.godot/imported/spawn_balls.png-b3f11d59d0fce1ea05578140e321992e.ctex"
+uid="uid://c5llexpitfhqg"
+path="res://.godot/imported/flecha.png-6844476b46216366e65f21526553aa5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spawn_balls.png"
-dest_files=["res://.godot/imported/spawn_balls.png-b3f11d59d0fce1ea05578140e321992e.ctex"]
+source_file="res://assets/general/flecha.png"
+dest_files=["res://.godot/imported/flecha.png-6844476b46216366e65f21526553aa5a.ctex"]
 
 [params]
 

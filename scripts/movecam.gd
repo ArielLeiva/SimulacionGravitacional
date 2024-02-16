@@ -50,13 +50,13 @@ func _process(delta):
 		vel.x += 1
 	
 	# Camera dragging movement
-	if (!drag_held and Input.is_action_pressed("drag_camera")):
+	if !drag_held and (Input.is_action_pressed("drag_camera") or (Input.is_action_pressed("l_click") and glob.mode == glob.states.DRAG_MODE)):
 		drag_held = true
 		old_offset = offset
 		old_mouse = (get_viewport().get_mouse_position())
 	elif drag_held:
 		des_offset = old_offset + (1/zoom.x)*(old_mouse - get_viewport().get_mouse_position())
-		if Input.is_action_just_released("drag_camera"):
+		if Input.is_action_just_released("drag_camera") or (Input.is_action_just_released("l_click") and glob.mode == glob.states.DRAG_MODE):
 			drag_held = false
 		
 	vel = vel.normalized()
@@ -68,11 +68,9 @@ func _process(delta):
 		offset = des_offset
 	
 func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			if (event.button_index == MOUSE_BUTTON_WHEEL_UP):
-				if(des_zoom < max_zoom):
-					des_zoom += Vector2(zoom_speed, zoom_speed)
-			if (event.button_index == MOUSE_BUTTON_WHEEL_DOWN):
-				if (des_zoom > min_zoom):
-					des_zoom -= Vector2(zoom_speed, zoom_speed)
+	if event.is_action_pressed("zoom_in"):
+		if des_zoom < max_zoom:
+			des_zoom += Vector2(zoom_speed, zoom_speed)
+	if event.is_action_pressed("zoom_out"):
+		if des_zoom > min_zoom:
+			des_zoom -= Vector2(zoom_speed, zoom_speed)

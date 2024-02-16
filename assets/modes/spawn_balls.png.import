@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq3r5xdeeakn6"
-path="res://.godot/imported/stop.png-21b5e2ecc8f4a602e13063921f4a2f9d.ctex"
+uid="uid://dwx0226m8ncew"
+path="res://.godot/imported/spawn_balls.png-75188400c725ad668c98991670a2e134.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/stop.png"
-dest_files=["res://.godot/imported/stop.png-21b5e2ecc8f4a602e13063921f4a2f9d.ctex"]
+source_file="res://assets/modes/spawn_balls.png"
+dest_files=["res://.godot/imported/spawn_balls.png-75188400c725ad668c98991670a2e134.ctex"]
 
 [params]
 
