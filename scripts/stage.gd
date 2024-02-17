@@ -48,6 +48,8 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("hide_ui"):
 		ui.visible = !ui.visible
 	
+	# TODO: Redesign this hardcoded part
+	
 	var i = 0
 	for a in actions:
 		if event.is_action_pressed(a) and !conds[i]:

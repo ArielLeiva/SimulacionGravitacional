@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dxl2e42w03ssw" path="res://assets/celestial_bodies/enana_blanca.png" id="2_4dy5d"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j0yhm"]
-friction = 0.29
-bounce = 0.17
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04t88"]
 radius = 59.5

@@ -8,7 +8,7 @@ var enabled: bool = false
 var click_held: bool = false
 var clicked_pos = Vector2.ZERO
 var global_clicked_pos = Vector2.ZERO
-var arrow
+var arrow = null
 # Inicial velocity vector
 var init_vector = Vector2.ZERO
 

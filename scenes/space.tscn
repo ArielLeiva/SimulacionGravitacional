@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://7x1we8o3gs3j" path="res://scenes/container.tscn" id="1_fgcaj"]
 [ext_resource type="PackedScene" uid="uid://ds146y5rievr3" path="res://scenes/UI.tscn" id="2_leqvt"]
-[ext_resource type="Script" path="res://scenes/follow.gd" id="5_mt5oc"]
+[ext_resource type="Script" path="res://scripts/follow.gd" id="5_mt5oc"]
 [ext_resource type="AudioStream" uid="uid://ccpf1ud2lfcfs" path="res://assets/music/in_space.mp3" id="6_krmbk"]
 [ext_resource type="Texture2D" uid="uid://d3jsyfuhdwafr" path="res://assets/general/cross.png" id="6_lblla"]
 [ext_resource type="Script" path="res://scripts/movecam.gd" id="6_nfv5j"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cxje02qt5d6rb" path="res://scenes/selection.tscn" id="8_6fium"]
 [ext_resource type="PackedScene" uid="uid://dniyfmh3kk4qr" path="res://scenes/spawn.tscn" id="9_8pkdf"]
 [ext_resource type="Script" path="res://scripts/drag.gd" id="11_ryher"]
-[ext_resource type="Script" path="res://scenes/quit.gd" id="12_lvujy"]
+[ext_resource type="Script" path="res://scripts/quit.gd" id="12_lvujy"]
 
 [node name="Node2D" type="Node2D"]
 

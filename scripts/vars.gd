@@ -6,8 +6,8 @@ var new_mass: float = 100
 @export var min_mass: float = 100
 
 var new_vol: float = 1
-@export var min_vol: float = 3
-@export var max_vol: float = 0.02
+@export var min_vol: float = 0.12
+@export var max_vol: float = 5
 
 const base_ball_size = 60
 # Best collision size obtained by trial and error
@@ -20,6 +20,9 @@ var new_sprite = Texture2D
 
 enum states { SPAWN_MODE, SELECT_MODE , DRAG_MODE}
 var mode = states.SPAWN_MODE
+
+var ball_friction = 0
+var ball_bounce = 0
 
 func load_sprites():
 	var path = "res://assets/celestial_bodies/"
@@ -62,7 +65,7 @@ func default():
 	set_random_sprite()
 	# Setting initial mode
 	glob.mode = states.SPAWN_MODE
-	
+
 func _ready():
 	default()
 	

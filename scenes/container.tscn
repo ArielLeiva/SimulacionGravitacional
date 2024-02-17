@@ -54,6 +54,7 @@ motion_mirroring = Vector2(1280, 720)
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_t2hoy")
+metadata/_edit_use_anchors_ = true
 
 [node name="some_closer_stars" type="ParallaxLayer" parent="LivingZone/background0"]
 motion_scale = Vector2(0.06, 0.06)
@@ -64,6 +65,7 @@ texture_filter = 1
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("6_06d04")
+metadata/_edit_use_anchors_ = true
 
 [node name="walls" type="StaticBody2D" parent="."]
 

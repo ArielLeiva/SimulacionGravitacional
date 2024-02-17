@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ds146y5rievr3"]
+[gd_scene load_steps=32 format=3 uid="uid://ds146y5rievr3"]
 
 [ext_resource type="Script" path="res://scripts/screen.gd" id="1_e3c31"]
 [ext_resource type="Script" path="res://scripts/rects.gd" id="2_le6ho"]
@@ -12,18 +12,20 @@
 [ext_resource type="Texture2D" uid="uid://dwx0226m8ncew" path="res://assets/modes/spawn_balls.png" id="10_2aj5e"]
 [ext_resource type="Script" path="res://scripts/gravity.gd" id="10_ipmjs"]
 [ext_resource type="Texture2D" uid="uid://cnkqdfknsiuln" path="res://assets/general/trash_can.png" id="11_1fwph"]
-[ext_resource type="Script" path="res://scripts/follow.gd" id="12_gjoku"]
 [ext_resource type="Texture2D" uid="uid://dg7sw5lektam4" path="res://assets/general/zoom_out.png" id="12_unl2f"]
 [ext_resource type="Texture2D" uid="uid://nt4k0aleo030" path="res://assets/general/zoom_in.png" id="13_wrd8b"]
 [ext_resource type="Texture2D" uid="uid://d2uwfe7q1h5m1" path="res://assets/modes/gravity_button.png" id="14_vssui"]
 [ext_resource type="Texture2D" uid="uid://dmggqbt6qeg1l" path="res://assets/modes/gravity_button_pressed.png" id="15_pam3s"]
 [ext_resource type="Texture2D" uid="uid://bhln8cgnp6rn2" path="res://assets/modes/follow_button.png" id="17_m45qu"]
 [ext_resource type="Texture2D" uid="uid://b31lork5j8sdw" path="res://assets/modes/follow_button_pressed.png" id="18_jrsj2"]
+[ext_resource type="Script" path="res://scripts/follow_button.gd" id="19_ac2ot"]
 [ext_resource type="Texture2D" uid="uid://ddj6fqensgemi" path="res://assets/time/stop_button.png" id="20_h7lwt"]
 [ext_resource type="Texture2D" uid="uid://dmxr6jxiai8cw" path="res://assets/time/play_button.png" id="20_jbbwb"]
 [ext_resource type="Texture2D" uid="uid://ccg05vufxxn8v" path="res://assets/time/fast_button.png" id="21_n3f00"]
 [ext_resource type="Script" path="res://scripts/decibels.gd" id="22_r0dd1"]
 [ext_resource type="Texture2D" uid="uid://vkowbdxy7v7o" path="res://assets/modes/hide_ui.png" id="23_awhju"]
+[ext_resource type="Texture2D" uid="uid://cfloygunt22km" path="res://assets/general/wrench.png" id="24_4hdme"]
+[ext_resource type="Script" path="res://scenes/tips.gd" id="26_ts1gg"]
 
 [sub_resource type="FontFile" id="FontFile_7ojnd"]
 subpixel_positioning = 0
@@ -3107,6 +3109,16 @@ cache/0/26/0/kerning_overrides/26/0 = Vector2(0, 0)
 [sub_resource type="LabelSettings" id="LabelSettings_1pg1t"]
 font = SubResource("FontFile_7ojnd")
 
+[sub_resource type="LabelSettings" id="LabelSettings_qd31r"]
+line_spacing = 3.11
+font_size = 46
+
+[sub_resource type="LabelSettings" id="LabelSettings_ukh77"]
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_uxlnb"]
+font_size = 31
+
 [node name="UI" type="CanvasLayer" groups=["UI"]]
 script = ExtResource("1_e3c31")
 
@@ -3138,11 +3150,10 @@ offset_top = 391.0
 offset_right = 1221.0
 offset_bottom = 510.0
 
-[node name="ReferenceRect" type="ReferenceRect" parent="rects"]
-offset_left = 432.0
-offset_top = 1.0
-offset_right = 757.0
-offset_bottom = 74.0
+[node name="misc_rect" type="ReferenceRect" parent="rects"]
+offset_left = 457.0
+offset_right = 791.0
+offset_bottom = 76.0
 
 [node name="Buttons2" type="HBoxContainer" parent="."]
 anchors_preset = 3
@@ -3287,10 +3298,11 @@ scale = Vector2(1.275, 1.35)
 texture_normal = ExtResource("17_m45qu")
 texture_pressed = ExtResource("18_jrsj2")
 action = "follow"
-script = ExtResource("12_gjoku")
+script = ExtResource("19_ac2ot")
 
 [node name="time" type="CanvasGroup" parent="VBoxContainer"]
 process_mode = 3
+position = Vector2(32, 3)
 scale = Vector2(1.29, 1.29)
 
 [node name="stop" type="TouchScreenButton" parent="VBoxContainer/time"]
@@ -3325,6 +3337,18 @@ scale = Vector2(1.275, 1.35)
 texture_normal = ExtResource("23_awhju")
 action = "hide_ui"
 
+[node name="settings" type="CanvasGroup" parent="VBoxContainer"]
+visible = false
+position = Vector2(74, 3)
+
+[node name="wrench" type="TouchScreenButton" parent="VBoxContainer/settings"]
+modulate = Color(1, 1, 1, 0.541176)
+texture_filter = 1
+position = Vector2(-714, -8)
+scale = Vector2(1.645, 1.742)
+texture_normal = ExtResource("24_4hdme")
+action = "settings"
+
 [node name="decibels" type="HScrollBar" parent="."]
 process_mode = 4
 visible = false
@@ -3333,6 +3357,160 @@ offset_top = 16.0
 offset_right = 428.0
 offset_bottom = 56.0
 script = ExtResource("22_r0dd1")
+
+[node name="tips" type="CanvasGroup" parent="."]
+visible = false
+script = ExtResource("26_ts1gg")
+
+[node name="Label" type="Label" parent="tips"]
+offset_left = 126.0
+offset_top = 541.0
+offset_right = 217.0
+offset_bottom = 635.0
+text = "1"
+label_settings = SubResource("LabelSettings_qd31r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="tips"]
+offset_left = 263.0
+offset_top = 541.0
+offset_right = 354.0
+offset_bottom = 635.0
+text = "2
+"
+label_settings = SubResource("LabelSettings_qd31r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="tips"]
+offset_left = 398.0
+offset_top = 541.0
+offset_right = 489.0
+offset_bottom = 635.0
+text = "3"
+label_settings = SubResource("LabelSettings_qd31r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="tips"]
+offset_left = 531.0
+offset_top = 532.0
+offset_right = 622.0
+offset_bottom = 626.0
+text = "g"
+label_settings = SubResource("LabelSettings_qd31r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="tips"]
+offset_left = 1116.0
+offset_top = 394.0
+offset_right = 1207.0
+offset_bottom = 488.0
+text = "r"
+label_settings = SubResource("LabelSettings_qd31r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="tips"]
+offset_left = 539.0
+offset_top = -13.0
+offset_right = 629.0
+offset_bottom = 81.0
+text = "tab"
+label_settings = SubResource("LabelSettings_ukh77")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="tips"]
+offset_left = 620.0
+offset_top = -13.0
+offset_right = 710.0
+offset_bottom = 81.0
+text = "f"
+label_settings = SubResource("LabelSettings_ukh77")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="tips"]
+offset_left = 701.0
+offset_top = -13.0
+offset_right = 791.0
+offset_bottom = 81.0
+text = "f1"
+label_settings = SubResource("LabelSettings_ukh77")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="tips"]
+offset_left = 457.0
+offset_top = -12.0
+offset_right = 547.0
+offset_bottom = 82.0
+text = "space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="tips"]
+offset_left = 990.0
+offset_top = 16.0
+offset_right = 1080.0
+offset_bottom = 110.0
+text = "q"
+label_settings = SubResource("LabelSettings_uxlnb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="tips"]
+offset_left = 1129.0
+offset_top = 16.0
+offset_right = 1219.0
+offset_bottom = 110.0
+text = "e"
+label_settings = SubResource("LabelSettings_uxlnb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="tips"]
+offset_left = 993.0
+offset_top = 298.0
+offset_right = 1083.0
+offset_bottom = 392.0
+text = "a"
+label_settings = SubResource("LabelSettings_uxlnb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label13" type="Label" parent="tips"]
+offset_left = 1108.0
+offset_top = 298.0
+offset_right = 1198.0
+offset_bottom = 392.0
+text = "d"
+label_settings = SubResource("LabelSettings_uxlnb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label14" type="Label" parent="tips"]
+offset_left = 970.0
+offset_top = 529.0
+offset_right = 1060.0
+offset_bottom = 623.0
+text = "mouse
+down"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label15" type="Label" parent="tips"]
+offset_left = 1087.0
+offset_top = 528.0
+offset_right = 1190.0
+offset_bottom = 622.0
+text = "mouse
+up"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="text_submitted" from="VBoxContainer/mass_counter" to="." method="_on_line_edit_text_submitted"]

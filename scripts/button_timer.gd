@@ -9,14 +9,14 @@ func change(id):
 			glob.new_mass += 100
 			get_tree().get_first_node_in_group("mass_counter").text = str(glob.new_mass)
 		1:
-			if	(glob.new_mass > 100):
+			if	(glob.new_mass > glob.min_mass):
 				glob.new_mass -= 100
 				get_tree().get_first_node_in_group("mass_counter").text = str(glob.new_mass)
 		2:
 			glob.new_vol += 0.1
 			get_tree().get_first_node_in_group("previsualization").update_scale()
 		3:
-			if (glob.new_vol > 0):
+			if (glob.new_vol > glob.min_vol):
 				glob.new_vol -= 0.1
 				get_tree().get_first_node_in_group("previsualization").update_scale()
 

@@ -11,6 +11,9 @@ func is_inside_ball(p: Vector2):
 	return (p-position).length_squared() <= (proportion * glob.base_ball_col_size)**2
 
 func _ready():
+	physics_material_override.friction = glob.ball_friction
+	physics_material_override.bounce = glob.ball_bounce
+	
 	col.shape = CircleShape2D.new()
 	col.position.x = 2
 	col.position.y = 2

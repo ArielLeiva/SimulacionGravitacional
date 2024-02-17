@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://2gjlawb5e31"]
+
+[ext_resource type="Texture2D" uid="uid://dmxr6jxiai8cw" path="res://assets/time/play_button.png" id="1_gveui"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_r3b7v"]
+[ext_resource type="Script" path="res://scripts/parallax.gd" id="2_jlqbj"]
+[ext_resource type="Texture2D" uid="uid://blhr5qcj8mc1a" path="res://assets/general/fondo.png" id="3_g1jp3"]
+[ext_resource type="Texture2D" uid="uid://djuau8lg4p88i" path="res://assets/space/background1.png" id="4_i1nch"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_30ye2"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_r3b7v")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_jlqbj")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+motion_mirroring = Vector2(7680, 4320)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_left = -9169.0
+offset_top = -5009.0
+offset_right = 9205.0
+offset_bottom = 5088.0
+texture = ExtResource("3_g1jp3")
+stretch_mode = 1
+
+[node name="background0" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+script = ExtResource("2_jlqbj")
+
+[node name="main_back" type="ParallaxLayer" parent="background0"]
+motion_scale = Vector2(0.045, 0.045)
+motion_mirroring = Vector2(1280, 720)
+
+[node name="TextureRect" type="TextureRect" parent="background0/main_back"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_i1nch")
+metadata/_edit_use_anchors_ = true
+
+[node name="some_closer_stars" type="ParallaxLayer" parent="background0"]
+motion_scale = Vector2(0.06, 0.06)
+motion_mirroring = Vector2(1280, 720)
+
+[node name="TextureRect" type="TextureRect" parent="background0/some_closer_stars"]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="menuUI" type="CanvasLayer" parent="."]
+
+[node name="options_background" type="TextureRect" parent="menuUI"]
+modulate = Color(0.466667, 0.619608, 0.752941, 0.627451)
+offset_left = 403.0
+offset_top = 80.0
+offset_right = 854.0
+offset_bottom = 488.0
+texture = SubResource("CanvasTexture_30ye2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menuUI"]
+offset_left = 425.0
+offset_top = 120.0
+offset_right = 830.0
+offset_bottom = 426.0
+
+[node name="Label" type="Label" parent="menuUI/VBoxContainer"]
+layout_mode = 2
+text = "Bouncing:
+"
+horizontal_alignment = 1
+
+[node name="BSlide" type="HSlider" parent="menuUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="menuUI/VBoxContainer"]
+layout_mode = 2
+text = "Friction
+"
+horizontal_alignment = 1
+
+[node name="FSlide" type="HSlider" parent="menuUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="start_button" type="TouchScreenButton" parent="menuUI/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.643137)
+position = Vector2(153, 159)
+scale = Vector2(2.725, 2.775)
+texture_normal = ExtResource("1_gveui")
+action = "start_game"
+
+[node name="tip" type="Label" parent="."]
+offset_left = 442.0
+offset_top = 434.0
+offset_right = 831.0
+offset_bottom = 490.0
+text = "f2 during gameplay to show keyboard mappings"
+
+[connection signal="value_changed" from="menuUI/VBoxContainer/BSlide" to="." method="_on_b_slide_value_changed"]
+[connection signal="value_changed" from="menuUI/VBoxContainer/FSlide" to="." method="_on_f_slide_value_changed"]
