@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://ccg05vufxxn8v" path="res://assets/time/fast_button.png" id="21_n3f00"]
 [ext_resource type="Script" path="res://scripts/decibels.gd" id="22_r0dd1"]
 [ext_resource type="Texture2D" uid="uid://vkowbdxy7v7o" path="res://assets/modes/hide_ui.png" id="23_awhju"]
-[ext_resource type="Texture2D" uid="uid://cfloygunt22km" path="res://assets/general/wrench.png" id="24_4hdme"]
+[ext_resource type="Texture2D" path="res://assets/general/wrench.png" id="24_4hdme"]
 [ext_resource type="Script" path="res://scenes/tips.gd" id="26_ts1gg"]
 
 [sub_resource type="FontFile" id="FontFile_7ojnd"]

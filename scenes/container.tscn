@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/container.gd" id="1_ada0w"]
 [ext_resource type="Script" path="res://scripts/node_killing.gd" id="1_mei8t"]
-[ext_resource type="Texture2D" uid="uid://blhr5qcj8mc1a" path="res://assets/general/fondo.png" id="2_nynu6"]
 [ext_resource type="Script" path="res://scripts/parallax.gd" id="3_18l67"]
+[ext_resource type="Texture2D" uid="uid://dv87y0be5s20a" path="res://assets/space/background1p2.png" id="5_41j1r"]
 [ext_resource type="Texture2D" uid="uid://djuau8lg4p88i" path="res://assets/space/background1.png" id="5_t2hoy"]
 [ext_resource type="Texture2D" uid="uid://b55in66ue3162" path="res://assets/space/background2.png" id="6_06d04"]
 
@@ -27,27 +27,12 @@ visible = false
 shape = SubResource("RectangleShape2D_6ujro")
 disabled = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="LivingZone"]
-script = ExtResource("3_18l67")
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="LivingZone/ParallaxBackground"]
-visible = false
-motion_mirroring = Vector2(7680, 4320)
-
-[node name="TextureRect" type="TextureRect" parent="LivingZone/ParallaxBackground/ParallaxLayer"]
-offset_left = -9169.0
-offset_top = -5009.0
-offset_right = 9205.0
-offset_bottom = 5088.0
-texture = ExtResource("2_nynu6")
-stretch_mode = 1
-
 [node name="background0" type="ParallaxBackground" parent="LivingZone"]
 scroll_ignore_camera_zoom = true
 script = ExtResource("3_18l67")
 
 [node name="main_back" type="ParallaxLayer" parent="LivingZone/background0"]
-motion_scale = Vector2(0.045, 0.045)
+motion_scale = Vector2(0.08, 0.08)
 motion_mirroring = Vector2(1280, 720)
 
 [node name="TextureRect" type="TextureRect" parent="LivingZone/background0/main_back"]
@@ -56,8 +41,20 @@ offset_bottom = 40.0
 texture = ExtResource("5_t2hoy")
 metadata/_edit_use_anchors_ = true
 
+[node name="stars" type="ParallaxLayer" parent="LivingZone/background0"]
+modulate = Color(1, 1, 1, 0.662745)
+motion_scale = Vector2(0.075, 0.075)
+motion_mirroring = Vector2(1280, 720)
+
+[node name="TextureRect" type="TextureRect" parent="LivingZone/background0/stars"]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_41j1r")
+metadata/_edit_use_anchors_ = true
+
 [node name="some_closer_stars" type="ParallaxLayer" parent="LivingZone/background0"]
-motion_scale = Vector2(0.06, 0.06)
+motion_scale = Vector2(0.13, 0.13)
 motion_mirroring = Vector2(1280, 720)
 
 [node name="TextureRect" type="TextureRect" parent="LivingZone/background0/some_closer_stars"]
