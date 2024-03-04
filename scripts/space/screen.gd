@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var rects = $rects
 @onready var follow_button = $VBoxContainer/modes/follow 
 @onready var trash_can = $VBoxContainer/modes/trash_can
+@onready var shrink_button = $VBoxContainer/modes/shrink
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,9 +23,10 @@ func _on_line_edit_text_submitted(new_text):
 	mass_counter.visible = true
 
 func update_ui():
-	follow_button.visible = !get_tree().get_nodes_in_group("selected").is_empty()
-	trash_can.visible = !get_tree().get_nodes_in_group("selected").is_empty()
-
+	var are_selected_objs = !get_tree().get_nodes_in_group("selected").is_empty()
+	follow_button.visible = are_selected_objs
+	trash_can.visible = are_selected_objs
+	shrink_button.visible = are_selected_objs
 
 func _on_visibility_changed():
 	if !visible:

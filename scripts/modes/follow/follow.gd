@@ -20,6 +20,7 @@ func _ready():
 
 func update_barycenter():
 	masses = 0
+	barycenter = Vector2.ZERO
 	var bodies = get_tree().get_nodes_in_group("selected")
 	for body in bodies:
 		if body.is_in_group("balls"):

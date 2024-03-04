@@ -18,6 +18,20 @@ func deactivate():
 	set_process(false)
 	set_physics_process(false)
 
+func spawn_ball(position, mass, volume, init_vel, rot_vel, selected):
+	var x = ball.instantiate()
+	x.position = position
+	x.mass = mass
+	x.proportion = volume
+	x.linear_velocity = init_vel
+	x.angular_velocity = rot_vel
+	stage.add_child(x)
+	x.add_to_group("balls")
+	if selected:
+		x.add_to_group("selected")
+		x.modulate = Color(0.5,0.7,0.7)
+	return x
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	enabled = true
@@ -50,13 +64,7 @@ func _process(_delta):
 			init_vector = present_click - clicked_pos
 			arrow.look_and_scale(init_vector / camera.zoom.x)
 		elif Input.is_action_just_released("l_click"):
-			var x = ball.instantiate()
-			x.position = global_clicked_pos
-			x.mass = glob.new_mass
-			x.proportion = glob.new_vol
-			x.linear_velocity = init_vector / camera.zoom.x
-			stage.add_child(x)
-			x.add_to_group("balls")
+			spawn_ball(global_clicked_pos, glob.new_mass, glob.new_vol, init_vector / camera.zoom.x, 0, false)
 			# Hide arrow and stop processing
 			deactivate()
 
