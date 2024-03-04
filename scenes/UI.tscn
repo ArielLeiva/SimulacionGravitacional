@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ds146y5rievr3"]
+[gd_scene load_steps=39 format=3 uid="uid://ds146y5rievr3"]
 
 [ext_resource type="Script" path="res://scripts/screen.gd" id="1_e3c31"]
 [ext_resource type="Script" path="res://scripts/rects.gd" id="2_le6ho"]
@@ -6,16 +6,23 @@
 [ext_resource type="Texture2D" uid="uid://c7agfl815n7ih" path="res://assets/general/less.png" id="4_clikr"]
 [ext_resource type="Texture2D" uid="uid://cdum2p75dfjt7" path="res://assets/general/default.png" id="5_bym3p"]
 [ext_resource type="Script" path="res://scripts/prev.gd" id="6_n75wi"]
+[ext_resource type="Script" path="res://scripts/buttons/modes.gd" id="7_0kdyx"]
 [ext_resource type="Texture2D" uid="uid://d32xer1lp26hf" path="res://assets/modes/select_button_normal.png" id="7_lfnth"]
+[ext_resource type="Texture2D" uid="uid://b2nx2qds4bpov" path="res://assets/modes/select_button_pressed.png" id="8_25h8f"]
 [ext_resource type="Texture2D" uid="uid://cp6knslc6tevq" path="res://assets/modes/drag_mode_button.png" id="8_ixsps"]
 [ext_resource type="Texture2D" uid="uid://kmlosf2lw571" path="res://assets/modes/reset_button.png" id="9_dj6kr"]
+[ext_resource type="Script" path="res://scripts/buttons/select_button.gd" id="9_du6lf"]
+[ext_resource type="Texture2D" uid="uid://wsm41kqukudw" path="res://assets/modes/drag_mode_button_pressed.png" id="9_nwlg6"]
 [ext_resource type="Texture2D" uid="uid://dwx0226m8ncew" path="res://assets/modes/spawn_balls.png" id="10_2aj5e"]
 [ext_resource type="Script" path="res://scripts/gravity.gd" id="10_ipmjs"]
 [ext_resource type="Texture2D" uid="uid://cnkqdfknsiuln" path="res://assets/general/trash_can.png" id="11_1fwph"]
+[ext_resource type="Texture2D" uid="uid://desd3yln2o73b" path="res://assets/modes/spawn_balls_pressed.png" id="11_1g617"]
 [ext_resource type="Texture2D" uid="uid://dg7sw5lektam4" path="res://assets/general/zoom_out.png" id="12_unl2f"]
+[ext_resource type="Script" path="res://scripts/buttons/drag_mode.gd" id="12_uydsd"]
 [ext_resource type="Texture2D" uid="uid://nt4k0aleo030" path="res://assets/general/zoom_in.png" id="13_wrd8b"]
 [ext_resource type="Texture2D" uid="uid://d2uwfe7q1h5m1" path="res://assets/modes/gravity_button.png" id="14_vssui"]
 [ext_resource type="Texture2D" uid="uid://dmggqbt6qeg1l" path="res://assets/modes/gravity_button_pressed.png" id="15_pam3s"]
+[ext_resource type="Script" path="res://scripts/buttons/spawn_balls.gd" id="15_uho6g"]
 [ext_resource type="Texture2D" uid="uid://bhln8cgnp6rn2" path="res://assets/modes/follow_button.png" id="17_m45qu"]
 [ext_resource type="Texture2D" uid="uid://b31lork5j8sdw" path="res://assets/modes/follow_button_pressed.png" id="18_jrsj2"]
 [ext_resource type="Script" path="res://scripts/follow_button.gd" id="19_ac2ot"]
@@ -3221,14 +3228,7 @@ script = ExtResource("6_n75wi")
 process_mode = 3
 position = Vector2(-556, 584)
 scale = Vector2(2, 2)
-
-[node name="select" type="TouchScreenButton" parent="VBoxContainer/modes"]
-modulate = Color(1, 1, 1, 0.501961)
-texture_filter = 1
-position = Vector2(-59.5, -24.0064)
-scale = Vector2(1.275, 1.35)
-texture_normal = ExtResource("7_lfnth")
-action = "select_mode"
+script = ExtResource("7_0kdyx")
 
 [node name="drag_mode" type="TouchScreenButton" parent="VBoxContainer/modes"]
 modulate = Color(1, 1, 1, 0.501961)
@@ -3236,7 +3236,29 @@ texture_filter = 1
 position = Vector2(-194, -25)
 scale = Vector2(1.275, 1.35)
 texture_normal = ExtResource("8_ixsps")
+texture_pressed = ExtResource("9_nwlg6")
 action = "drag_mode"
+script = ExtResource("12_uydsd")
+
+[node name="spawn_balls" type="TouchScreenButton" parent="VBoxContainer/modes"]
+modulate = Color(1, 1, 1, 0.501961)
+texture_filter = 1
+position = Vector2(-126.5, -24.0064)
+scale = Vector2(1.275, 1.35)
+texture_normal = ExtResource("10_2aj5e")
+texture_pressed = ExtResource("11_1g617")
+action = "spawn_mode"
+script = ExtResource("15_uho6g")
+
+[node name="select" type="TouchScreenButton" parent="VBoxContainer/modes"]
+modulate = Color(1, 1, 1, 0.501961)
+texture_filter = 1
+position = Vector2(-59.5, -24.0064)
+scale = Vector2(1.275, 1.35)
+texture_normal = ExtResource("7_lfnth")
+texture_pressed = ExtResource("8_25h8f")
+action = "select_mode"
+script = ExtResource("9_du6lf")
 
 [node name="reset_buton" type="TouchScreenButton" parent="VBoxContainer/modes"]
 modulate = Color(1, 1, 1, 0.501961)
@@ -3245,14 +3267,6 @@ position = Vector2(300, -96)
 scale = Vector2(1.275, 1.35)
 texture_normal = ExtResource("9_dj6kr")
 action = "restart_scene"
-
-[node name="spawn_balls" type="TouchScreenButton" parent="VBoxContainer/modes"]
-modulate = Color(1, 1, 1, 0.501961)
-texture_filter = 1
-position = Vector2(-126.5, -24.0064)
-scale = Vector2(1.275, 1.35)
-texture_normal = ExtResource("10_2aj5e")
-action = "spawn_mode"
 
 [node name="trash_can" type="TouchScreenButton" parent="VBoxContainer/modes"]
 visible = false
@@ -3514,6 +3528,9 @@ vertical_alignment = 1
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="text_submitted" from="VBoxContainer/mass_counter" to="." method="_on_line_edit_text_submitted"]
+[connection signal="mode_changed" from="VBoxContainer/modes" to="VBoxContainer/modes/select" method="_on_modes_mode_changed"]
+[connection signal="mode_changed" from="VBoxContainer/modes" to="VBoxContainer/modes/drag_mode" method="_on_modes_mode_changed"]
+[connection signal="mode_changed" from="VBoxContainer/modes" to="VBoxContainer/modes/spawn_balls" method="_on_modes_mode_changed"]
 [connection signal="pressed" from="VBoxContainer/modes/gravity" to="VBoxContainer/modes/gravity" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/modes/follow" to="VBoxContainer/modes/follow" method="_on_pressed"]
 [connection signal="visibility_changed" from="VBoxContainer/modes/follow" to="VBoxContainer/modes/follow" method="_on_visibility_changed"]
