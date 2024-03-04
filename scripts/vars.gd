@@ -23,6 +23,7 @@ var mode = states.SPAWN_MODE
 
 var ball_friction = 0
 var ball_bounce = 0
+var disable_collisions = false
 
 func load_sprites():
 	var path = "res://assets/celestial_bodies/"
@@ -58,6 +59,7 @@ func default():
 	new_vol = 1
 	attract = false
 	get_tree().paused = false
+	Engine.time_scale = 1
 	
 	# Loading prites that will be used to create balls
 	load_sprites()

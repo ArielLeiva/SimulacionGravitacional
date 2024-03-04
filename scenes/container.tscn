@@ -65,6 +65,7 @@ texture = ExtResource("6_06d04")
 metadata/_edit_use_anchors_ = true
 
 [node name="walls" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="LeftWall" type="CollisionShape2D" parent="walls" groups=["collisions"]]
 position = Vector2(-3846, -2)
@@ -75,6 +76,7 @@ position = Vector2(3846, 1)
 shape = SubResource("RectangleShape2D_spnkb")
 
 [node name="up_down" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="up_down" groups=["collisions"]]
 position = Vector2(0, -2181)

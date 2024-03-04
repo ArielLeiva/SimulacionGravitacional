@@ -18,6 +18,9 @@ func _ready():
 	col.position.x = 2
 	col.position.y = 2
 	col.shape.radius = proportion * glob.base_ball_col_size
+	if glob.disable_collisions:
+		col.shape.radius = 6
+		lock_rotation = true
 	sprite.scale = Vector2(proportion, proportion)
 	sprite.texture = glob.new_sprite
 	# Picking some random skin for the next ball
