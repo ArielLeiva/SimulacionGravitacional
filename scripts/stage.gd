@@ -19,10 +19,7 @@ func _ready():
 	mode_updated.emit()
 
 func _unhandled_input(event):
-	if !ui.visible and event.is_action_pressed("l_click"):
-		if !ui.inside_ui(event.position): 
-			ui.visible = true		
-	elif event.is_action_pressed("select_mode"):
+	if event.is_action_pressed("select_mode"):
 		glob.mode = glob.states.SELECT_MODE
 		mode_updated.emit()
 	elif event.is_action_pressed("spawn_mode"):
@@ -47,9 +44,11 @@ func _unhandled_input(event):
 		get_tree().paused = !get_tree().paused
 	elif event.is_action_pressed("hide_ui"):
 		ui.visible = !ui.visible
-	
+	elif !ui.visible and event.is_action_pressed("l_click"):
+		if event.double_click:
+			ui.visible = !ui.visible
+
 	# TODO: Redesign this hardcoded part
-	
 	var i = 0
 	for a in actions:
 		if event.is_action_pressed(a) and !conds[i]:
