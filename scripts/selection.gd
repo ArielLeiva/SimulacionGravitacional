@@ -7,6 +7,7 @@ signal selection_clean
 @onready var sprite = $area/sprite
 var clicked_pos = Vector2.ZERO
 var camera = null
+var old_camera_offset = Vector2.ZERO
 var ui = null
 @export var enabled = true
 var click_held = false
@@ -30,6 +31,7 @@ func _input(event):
 		if !ui.inside_ui(clicked_pos):	
 			if camera:
 				clicked_pos = camera.camera_to_global(clicked_pos)
+				old_camera_offset = camera.offset
 			area.position = clicked_pos
 			click_held = true
 			visible = true
@@ -48,18 +50,21 @@ func _process(_delta):
 		ui.update_ui()
 		deactivate()	
 	if Input.is_action_pressed("l_click"):
+		# New clicked_pos caused by camera movement
+		var moved_clicked_pos = clicked_pos
 		var moved = clicked_pos - get_viewport().get_mouse_position()
 		if camera:
-			moved = clicked_pos - camera.camera_to_global(get_viewport().get_mouse_position())
+			moved_clicked_pos = clicked_pos + (camera.offset-old_camera_offset)
+			moved = moved_clicked_pos - camera.camera_to_global(get_viewport().get_mouse_position())
 		area.shape.size = moved.abs()
 		sprite.scale = area.shape.size/120
-		area.position = clicked_pos - moved/2
+		area.position = moved_clicked_pos - moved/2
 	elif Input.is_action_just_released("l_click"):
 		ui.update_ui()
 		deactivate()
 
 func _on_body_entered(body):
-	if enabled:
+	if enabled and click_held:
 		body.add_to_group("selected")
 		body.modulate = Color(0.5,0.7,0.7)
 	ui.update_ui()
