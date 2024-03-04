@@ -3159,9 +3159,10 @@ offset_right = 1221.0
 offset_bottom = 510.0
 
 [node name="misc_rect" type="ReferenceRect" parent="rects"]
-offset_left = 384.0
-offset_right = 791.0
-offset_bottom = 76.0
+offset_left = 442.0
+offset_top = 5.0
+offset_right = 849.0
+offset_bottom = 81.0
 
 [node name="Buttons2" type="HBoxContainer" parent="."]
 anchors_preset = 3
@@ -3264,7 +3265,7 @@ script = ExtResource("9_du6lf")
 [node name="go_to_main" type="TouchScreenButton" parent="VBoxContainer/modes"]
 modulate = Color(1, 1, 1, 0.501961)
 texture_filter = 1
-position = Vector2(-60.5, -293.5)
+position = Vector2(-31.5, -291)
 scale = Vector2(0.822375, 0.87075)
 texture_normal = ExtResource("17_nj7cp")
 action = "go_to_main"
@@ -3331,7 +3332,7 @@ scale = Vector2(1.29, 1.29)
 [node name="stop" type="TouchScreenButton" parent="VBoxContainer/time"]
 modulate = Color(1, 1, 1, 0.501961)
 texture_filter = 1
-position = Vector2(-486.256, -4.651)
+position = Vector2(-441.295, -0.775032)
 scale = Vector2(1.275, 1.35)
 texture_normal = ExtResource("20_h7lwt")
 action = "pause"
@@ -3339,7 +3340,7 @@ action = "pause"
 [node name="play" type="TouchScreenButton" parent="VBoxContainer/time"]
 modulate = Color(1, 1, 1, 0.501961)
 texture_filter = 1
-position = Vector2(-423.256, -4.65116)
+position = Vector2(-378.295, -0.775191)
 scale = Vector2(1.275, 1.35)
 texture_normal = ExtResource("20_jbbwb")
 action = "reset_speed"
@@ -3347,7 +3348,7 @@ action = "reset_speed"
 [node name="faster" type="TouchScreenButton" parent="VBoxContainer/time"]
 modulate = Color(1, 1, 1, 0.501961)
 texture_filter = 1
-position = Vector2(-360.256, -4.651)
+position = Vector2(-315.295, -0.775032)
 scale = Vector2(1.275, 1.35)
 texture_normal = ExtResource("21_n3f00")
 action = "fast_forward"
@@ -3355,7 +3356,7 @@ action = "fast_forward"
 [node name="hide_ui" type="TouchScreenButton" parent="VBoxContainer/time"]
 modulate = Color(1, 1, 1, 0.501961)
 texture_filter = 1
-position = Vector2(-297.256, -4.651)
+position = Vector2(-252.295, -0.775032)
 scale = Vector2(1.275, 1.35)
 texture_normal = ExtResource("23_awhju")
 action = "hide_ui"
