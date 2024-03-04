@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2bsm1eqd68u2"]
 
-[ext_resource type="Script" path="res://scripts/button_timer.gd" id="1_3162f"]
+[ext_resource type="Script" path="res://scripts/buttons/button_timer.gd" id="1_3162f"]
 
 [node name="ButtonTimer" type="Timer"]
 wait_time = 0.12

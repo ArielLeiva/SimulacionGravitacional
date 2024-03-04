@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://7x1we8o3gs3j"]
 
-[ext_resource type="Script" path="res://scripts/container.gd" id="1_ada0w"]
-[ext_resource type="Script" path="res://scripts/node_killing.gd" id="1_mei8t"]
-[ext_resource type="Script" path="res://scripts/parallax.gd" id="3_18l67"]
+[ext_resource type="Script" path="res://scripts/space/container.gd" id="1_ada0w"]
+[ext_resource type="Script" path="res://scripts/modes/spawn/node_killing.gd" id="2_2hlf4"]
+[ext_resource type="Script" path="res://scripts/space/parallax.gd" id="3_18l67"]
 [ext_resource type="Texture2D" uid="uid://dv87y0be5s20a" path="res://assets/space/background1p2.png" id="5_41j1r"]
 [ext_resource type="Texture2D" uid="uid://djuau8lg4p88i" path="res://assets/space/background1.png" id="5_t2hoy"]
 [ext_resource type="Texture2D" uid="uid://b55in66ue3162" path="res://assets/space/background2.png" id="6_06d04"]
@@ -20,7 +20,7 @@ size = Vector2(7680, 8)
 script = ExtResource("1_ada0w")
 
 [node name="LivingZone" type="Area2D" parent="."]
-script = ExtResource("1_mei8t")
+script = ExtResource("2_2hlf4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LivingZone" groups=["container"]]
 visible = false

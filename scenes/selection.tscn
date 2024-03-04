@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxje02qt5d6rb"]
 
-[ext_resource type="Script" path="res://scripts/selection.gd" id="1_xmd1h"]
+[ext_resource type="Script" path="res://scripts/modes/selection/selection.gd" id="1_xmd1h"]
 [ext_resource type="Texture2D" uid="uid://dw11v6bx7yd3p" path="res://assets/general/selection.png" id="2_ej36h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wmb8"]
