@@ -47,7 +47,10 @@ func _unhandled_input(event):
 	elif !ui.visible and event.is_action_pressed("l_click"):
 		if event.double_click:
 			ui.visible = !ui.visible
-
+	elif event.is_action_pressed("go_to_main"):
+		glob.default()
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	
 	# TODO: Redesign this hardcoded part
 	var i = 0
 	for a in actions:

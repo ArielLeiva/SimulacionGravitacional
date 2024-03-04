@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ds146y5rievr3"]
+[gd_scene load_steps=40 format=3 uid="uid://ds146y5rievr3"]
 
 [ext_resource type="Script" path="res://scripts/screen.gd" id="1_e3c31"]
 [ext_resource type="Script" path="res://scripts/rects.gd" id="2_le6ho"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dmggqbt6qeg1l" path="res://assets/modes/gravity_button_pressed.png" id="15_pam3s"]
 [ext_resource type="Script" path="res://scripts/buttons/spawn_balls.gd" id="15_uho6g"]
 [ext_resource type="Texture2D" uid="uid://bhln8cgnp6rn2" path="res://assets/modes/follow_button.png" id="17_m45qu"]
+[ext_resource type="Texture2D" uid="uid://b7gfdynoagmns" path="res://assets/modes/go_to_main.png" id="17_nj7cp"]
 [ext_resource type="Texture2D" uid="uid://b31lork5j8sdw" path="res://assets/modes/follow_button_pressed.png" id="18_jrsj2"]
 [ext_resource type="Script" path="res://scripts/follow_button.gd" id="19_ac2ot"]
 [ext_resource type="Texture2D" uid="uid://ddj6fqensgemi" path="res://assets/time/stop_button.png" id="20_h7lwt"]
@@ -3158,7 +3159,7 @@ offset_right = 1221.0
 offset_bottom = 510.0
 
 [node name="misc_rect" type="ReferenceRect" parent="rects"]
-offset_left = 457.0
+offset_left = 384.0
 offset_right = 791.0
 offset_bottom = 76.0
 
@@ -3259,6 +3260,14 @@ texture_normal = ExtResource("7_lfnth")
 texture_pressed = ExtResource("8_25h8f")
 action = "select_mode"
 script = ExtResource("9_du6lf")
+
+[node name="go_to_main" type="TouchScreenButton" parent="VBoxContainer/modes"]
+modulate = Color(1, 1, 1, 0.501961)
+texture_filter = 1
+position = Vector2(-60.5, -293.5)
+scale = Vector2(0.822375, 0.87075)
+texture_normal = ExtResource("17_nj7cp")
+action = "go_to_main"
 
 [node name="reset_buton" type="TouchScreenButton" parent="VBoxContainer/modes"]
 modulate = Color(1, 1, 1, 0.501961)
